@@ -32,7 +32,7 @@ public class JEffect extends JDrawable {
             g.setColor(Color.white);
 			g.drawString(effect.GetTime() + "", 4, 14);
 		}
-		// DO NOT!!!!!!!!! cast to see if its individual
+		
 		if (effect.GetEffect().isIndividual()){
 			g.setColor(Color.blue);
 			Graphics2D g2 = (Graphics2D) g;
