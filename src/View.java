@@ -12,12 +12,12 @@ import java.util.*;
  * A grafikus ablakot megjelenÃ­tÅ‘ osztÃ¡ly
  * */
 public class View extends JFrame implements MouseListener{
-	private JButton bEndTurn;
-	private JButton interactions[];
-	private ArrayList<JField> fields = new ArrayList<JField>();
-	private ArrayList<JVirologist> virologists =  new ArrayList<JVirologist>();
-	private ArrayList<JEquipment> equipments =  new ArrayList<JEquipment>();
+	private ArrayList<JField> fields = new ArrayList<>();
+	private ArrayList<JVirologist> virologists =  new ArrayList<>();
+	private ArrayList<JEquipment> equipments =  new ArrayList<>();
 	
+	private Random rnd = new Random();
+
 	Interface iface;
 	JPanel map;
 	JInventory inventoryPanel;
@@ -25,14 +25,14 @@ public class View extends JFrame implements MouseListener{
 	int mapwidth = 6;
 	
 	enum ViewState {
-		none, 
-		fieldSelect, 
-		virologistSelectToVirus, 
-		virologistSelectToKill,
-		virologistSelectToLoot
+		NONE, 
+		FIELDSELECT, 
+		VIROLOGISTSELECTTOVIRUS, 
+		VIROLOGISTSELECTTOKILL,
+		VIROLOGISTSELECTTOLOOT
 	};
 	
-	ViewState state = ViewState.none;
+	ViewState viewState = ViewState.NONE;
 	Agent selectedAgent;
 	Axe selectedAxe;
 	Virologist selectedVirologist = null;
@@ -115,8 +115,6 @@ public class View extends JFrame implements MouseListener{
 				}
 			}
 		}
-		Random rnd = new Random();
-		ArrayList<Field> modelFields = new ArrayList<>();
 		// generate map
 		
 		//List that countains the position of at least 3 distinct labs
@@ -181,28 +179,32 @@ public class View extends JFrame implements MouseListener{
 					//a predetermined genCode, so all genCodes are definitely obtainable
 					if(isPredeterminedLab) {
 						switch(listOfLabPositions.indexOf(id)) {
-						case 0:
-							genCode = "stun";
-							break;
-						case 1:
-							genCode = "confusion";
-							break;						
-						case 2:
-							genCode = "amnesia";
-							break;
+							case 0:
+								genCode = "stun";
+								break;
+							case 1:
+								genCode = "confusion";
+								break;						
+							case 2:
+								genCode = "amnesia";
+								break;
+							default:
+								genCode = "stun";
 						}
 					} else { //Else, randomize
 						int r = rnd.nextInt(3);
 						switch(r) {
-						case 0:
-							genCode = "stun";
-							break;
-						case 1:
-							genCode = "confusion";
-							break;
-						case 2:
-							genCode = "amnesia";
-							break;
+							case 0:
+								genCode = "stun";
+								break;
+							case 1:
+								genCode = "confusion";
+								break;
+							case 2:
+								genCode = "amnesia";
+								break;
+							default:
+								genCode = "stun";
 						}
 					}
 					String infected = rnd.nextFloat() < 0.1 ? "i": "n";
@@ -217,36 +219,23 @@ public class View extends JFrame implements MouseListener{
 				} else if(type == 3)
 				{
 					String eq = "";
-					String img = "";
-					int eqtype = rnd.nextInt(5);
+					int eqtype = rnd.nextInt(4);
 					if(eqtype == 0)
 					{
 						eq = "cape";
-						img = JDrawable.IMG_CAPE;
 					} else if(eqtype == 1)
 					{
 						eq = "glove";
-						img = JDrawable.IMG_GLOVE;
 					} else if(eqtype == 2)
 					{
-						eq = "cape";
-						img = JDrawable.IMG_CAPE;
+						eq = "axe";
 					} else if(eqtype == 3)
 					{
-						eq = "axe";
-						img = JDrawable.IMG_AXE;
-					} else if(eqtype == 4)
-					{
 						eq = "bag";
-						img = JDrawable.IMG_BAG;
 					} 
 					
 					iface.GUIcommand("shelter", eq, id, equipments.size());
 					imgName = JDrawable.IMG_SHELTER;
-					/*
-					JEquipment jeq = eq.equals("axe") ? new JAxe(this, iface, inventoryPanel, null, img) : new JEquipment(iface, inventoryPanel, null, img);
-					equipments.add(jeq);
-					*/
 				} 
 				ArrayList<Field> list = iface.game.GetTown().GetFields();
 				
@@ -317,7 +306,7 @@ public class View extends JFrame implements MouseListener{
 			jv.ChangePicture();
 		}
 		inventoryPanel.updateContent(getCurrentVirologist());
-		onStateUpdate(ViewState.none);
+		onStateUpdate(ViewState.NONE);
 		repaint();
 	}
 	
@@ -329,27 +318,27 @@ public class View extends JFrame implements MouseListener{
 	}
 	
 	public void onMoveClick() {
-		onStateUpdate(state == ViewState.fieldSelect ? ViewState.none : ViewState.fieldSelect);
+		onStateUpdate(viewState == ViewState.FIELDSELECT ? ViewState.NONE : ViewState.FIELDSELECT);
 	}
 	public void onVirusClick(Agent agent) {
-		onStateUpdate(ViewState.virologistSelectToVirus);
+		onStateUpdate(ViewState.VIROLOGISTSELECTTOVIRUS);
 		selectedAgent = agent;
 		inventoryPanel.updateContent(null);
 		inventoryPanel.setOptionButtons(null);
 	}
 	public void onAxeUseClick(Axe axe) {
-		onStateUpdate(ViewState.virologistSelectToKill);
+		onStateUpdate(ViewState.VIROLOGISTSELECTTOKILL);
 		selectedAxe = axe;
 	}
 	public void onLootClick() {
-		onStateUpdate(ViewState.virologistSelectToLoot);
+		onStateUpdate(ViewState.VIROLOGISTSELECTTOLOOT);
 	}
 	public void onStateUpdate(ViewState s)
 	{
 		// remove temp options 
 		inventoryPanel.setOptionButtons(null);
-		state = s;
-		if(state == ViewState.fieldSelect)
+		viewState = s;
+		if(viewState == ViewState.FIELDSELECT)
 		{
 			for(JField jf : fields)
 			{
@@ -364,7 +353,7 @@ public class View extends JFrame implements MouseListener{
 				jf.setHighlight(false);
 			}
 		}
-		if(state == ViewState.virologistSelectToVirus || state == ViewState.virologistSelectToKill)
+		if(viewState == ViewState.VIROLOGISTSELECTTOVIRUS || viewState == ViewState.VIROLOGISTSELECTTOKILL)
 		{
 			for(JVirologist v : virologists)
 			{
@@ -378,7 +367,7 @@ public class View extends JFrame implements MouseListener{
 					v.setListener(false);	
 				}
 			}
-		} else if(state == ViewState.virologistSelectToLoot)
+		} else if(viewState == ViewState.VIROLOGISTSELECTTOLOOT)
 		{
 			for(JVirologist v : virologists)
 			{
@@ -406,7 +395,7 @@ public class View extends JFrame implements MouseListener{
 		inventoryPanel.updateContent(getCurrentVirologist());
 	}
 	public void onFieldClick(Field f) {
-		if(state == ViewState.fieldSelect)
+		if(viewState == ViewState.FIELDSELECT)
 		{
 			iface.GUIcommand("move", f.Id);
 			// replace visually
@@ -416,30 +405,25 @@ public class View extends JFrame implements MouseListener{
 				field.remove(v);
 			}
 			fields.get(v.getVirologist().getField().Id).add(v);
-			onStateUpdate(ViewState.none);
+			onStateUpdate(ViewState.NONE);
 			inventoryPanel.updateContent(v.getVirologist());
 		}
 		repaint();
 	}
 	public void onVirologistClick(Virologist v) {
-		if(state == ViewState.virologistSelectToVirus)
-		{
-			if(v != getCurrentVirologist())
+		if(viewState == ViewState.VIROLOGISTSELECTTOVIRUS && (v != getCurrentVirologist()))
 			{
 				iface.GUIcommand("usevirus", selectedAgent.Id, v.Id);
-				onStateUpdate(ViewState.none);
-			}
+				onStateUpdate(ViewState.NONE);
+			
 		}
-		if(state == ViewState.virologistSelectToKill)
-		{
-			if(v != getCurrentVirologist())
+		if(viewState == ViewState.VIROLOGISTSELECTTOKILL && (v != getCurrentVirologist()))
 			{
 				iface.GUIcommand("kill", selectedAxe.Id, v.Id);
-				onStateUpdate(ViewState.none);
-			}
-		}if(state == ViewState.virologistSelectToLoot)
-		{
-			if(v != getCurrentVirologist() && v.Stunned())
+				onStateUpdate(ViewState.NONE);
+			
+		}
+		if(viewState == ViewState.VIROLOGISTSELECTTOLOOT && (v != getCurrentVirologist() && v.Stunned()))
 			{
 				selectedVirologist = v;
 				JButton [] buttons = new JButton[2 + v.getEquipmentInventory().size() + v.getEquippedEquipments().size()];
@@ -458,9 +442,9 @@ public class View extends JFrame implements MouseListener{
 					buttons[i] = new JEqiupmentButton("Steal " + eq.getType(), eq.Id);
 					buttons[i].addMouseListener(this);
 				}
-				onStateUpdate(ViewState.none);
+				onStateUpdate(ViewState.NONE);
 				inventoryPanel.setOptionButtons(buttons);
-			}
+			
 		}
 		inventoryPanel.updateContent(getCurrentVirologist());
 		repaint();
@@ -469,20 +453,21 @@ public class View extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		String steal = "steal";
 		if(selectedVirologist != null)
 		{
 			if(e.getSource() == bStealAmino)
 			{
-				iface.GUIcommand("steal", "a", selectedVirologist.Id);
+				iface.GUIcommand(steal, "a", selectedVirologist.Id);
 			} else if(e.getSource() == bStealNucleo)
 			{
-				iface.GUIcommand("steal", "n", selectedVirologist.Id);
+				iface.GUIcommand(steal, "n", selectedVirologist.Id);
 			} else 
 			{
 				try
 				{
 					JEqiupmentButton b = (JEqiupmentButton) e.getSource();
-					iface.GUIcommand("steal", "e", selectedVirologist.Id, b.Id);
+					iface.GUIcommand(steal, "e", selectedVirologist.Id, b.Id);
 					inventoryPanel.updateContent(null);
 				} catch(ClassCastException ex)
 				{

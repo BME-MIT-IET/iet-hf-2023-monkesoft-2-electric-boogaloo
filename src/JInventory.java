@@ -53,7 +53,6 @@ public class JInventory extends JPanel implements MouseListener{
 		
 		// panel az akciógomboknak
 		actionPanel.setLayout(new BoxLayout(actionPanel, BoxLayout.Y_AXIS));
-		//actionPanel.setAlignmentX(CENTER_ALIGNMENT);
 		actionPanel.setBackground(Color.darkGray);
 		actionPanel.add(bInteract);
 		actionPanel.add(bMove);
@@ -63,7 +62,6 @@ public class JInventory extends JPanel implements MouseListener{
 		for (Component c : actionPanel.getComponents())
 			((JComponent) c).setAlignmentX(CENTER_ALIGNMENT);
 		
-		// actionPanel.add(bConsoleLook);
 		bInteract.addMouseListener(this);
 		bMove.addMouseListener(this);
 		bEnd.addMouseListener(this);
@@ -201,7 +199,6 @@ public class JInventory extends JPanel implements MouseListener{
 		equipments.setLayout(new FlowLayout());
 		JScrollPane inventoryScroll = new JScrollPane(equipments, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		inventoryScroll.setPreferredSize(new Dimension(300, 60));
-		//inventoryScroll.setAlignmentX(LEFT_ALIGNMENT);
 		JPanel invScrPanel = new JPanel();
 		invScrPanel.setBackground(Color.darkGray);
 		invScrPanel.add(inventoryScroll);
@@ -259,7 +256,6 @@ public class JInventory extends JPanel implements MouseListener{
 				optionPanel.remove(b);
 		if(buttons != null)
 		{	
-			//System.out.println("DEBUG: options " + buttons.length);
 			for(JButton b : buttons)
 				optionPanel.add(b);
 		}
@@ -283,7 +279,6 @@ public class JInventory extends JPanel implements MouseListener{
 		effects.removeAll();
 		for(AppliedEffect ae : virologist.getAe())
 		{
-			//System.out.println("DEBUG: effect " + ae.GetEffect().name);
 			String name = "";
 			try
 			{
@@ -299,7 +294,6 @@ public class JInventory extends JPanel implements MouseListener{
 		gencodes.removeAll();
 		for(GeneticCode code : virologist.getCodeList())
 		{
-			//System.out.println("DEBUG: code " + code.getName());
 			gencodes.add(new JGeneticCode(iface, this, code, getEffectImage(code.getName())));
 		}
 		

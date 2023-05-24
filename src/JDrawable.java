@@ -55,6 +55,7 @@ public class JDrawable extends JComponent {
 	/**
 	 * Kirajzolja a JDrawable objektumot
 	 * */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(img, 0, 0, getWidth(), getHeight(), null);

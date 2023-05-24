@@ -34,4 +34,8 @@ public abstract class Protection extends Effect {
 		return false;
 
 	}
+
+	public boolean isIndividual(){
+		return false;
+	}
 }

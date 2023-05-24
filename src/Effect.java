@@ -29,7 +29,7 @@ public abstract class Effect {
  */
 	public void Apply(Virologist v) {
 		///Overridden in all effects with -1 Time
-		AppliedEffect ae = new AppliedEffect(v, this);
+		new AppliedEffect(v, this);
 		return;
 	}
 
@@ -49,6 +49,10 @@ public abstract class Effect {
 	public boolean Protect(Agent a, Virologist v, Virologist v2) {
 		return false;
 
+	}
+
+	public boolean isIndividual(){
+		return false;
 	}
 /**
  *  Ha az effekt befolyásolja az egész kört, akkor true-val, 

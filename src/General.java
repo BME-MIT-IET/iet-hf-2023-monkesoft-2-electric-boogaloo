@@ -37,11 +37,16 @@ public class General extends Protection {
 	}
 	
 	public void Apply(Virologist v) {
-		AppliedEffect ae = new AppliedEffect(v, this, -1);
+		new AppliedEffect(v, this, -1);
 	}
 	
 	@Override
 	public void Die(Virologist v) {
 		v.RemoveEffect(this);
+	}
+
+	@Override
+	public boolean isIndividual(){
+		return false;
 	}
 }

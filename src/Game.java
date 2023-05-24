@@ -22,7 +22,6 @@ public class Game implements Serializable{
 	private static final long serialVersionUID = 6561132216112946224L;
 	private Town Town;
 	private static ArrayList<GeneticCode> AllCodes = new ArrayList<>();
-	private Timer Timer;
 	private ArrayList<Effect> AllEffects = new ArrayList<>();
 	
 	private ArrayList<Virologist> Virologists = new ArrayList<>();
@@ -47,9 +46,6 @@ public class Game implements Serializable{
 	
 	public void Start() {
 		Town = new Town();
-	}
-
-	public void End() {
 	}
 
 	public static boolean CompareG(ArrayList<GeneticCode> g) {

@@ -32,18 +32,12 @@ public class JEffect extends JDrawable {
             g.setColor(Color.white);
 			g.drawString(effect.GetTime() + "", 4, 14);
 		}
-		try
-		{
-			// cast to see if its individual
-			Individual unused_variable_lmao = (Individual) effect.GetEffect();
-
+		
+		if (effect.GetEffect().isIndividual()){
 			g.setColor(Color.blue);
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(10));
 			g2.drawRect(0, 0, getWidth(), getHeight());
-		} catch(ClassCastException e)
-		{
-			
 		}
 	}
 }

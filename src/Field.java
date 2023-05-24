@@ -37,7 +37,6 @@ public class Field {
 	 */
 	
 	public void Interacted(Virologist v) {
-		
 	}
 	
 	/**

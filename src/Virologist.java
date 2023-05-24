@@ -24,9 +24,9 @@ import java.util.List;
  */
 
 public class Virologist {
-	private static final int DefaultMovementPoints = 3;
+	private static final int DEFAULTMOVEMENTPOINTS = 3;
 	//lÃ©pÃ©s pontok
-	private int MovementPoints = DefaultMovementPoints;
+	private int MovementPoints = DEFAULTMOVEMENTPOINTS;
 	//A virolÃ³gusnÃ¡l lÃ©vÅ‘ vÃ©dÅ‘felszerelÃ©sek..
 	private ArrayList<Equipment> EquipmentInventory = new ArrayList<>();
 	//A virolÃ³gus ismeretÃ©ben lÃ©vÅ‘ genetikai kÃ³dok.
@@ -38,8 +38,6 @@ public class Virologist {
 	//A virolÃ³gusnÃ¡l lÃ©vÅ‘ anyagok.
 	private ArrayList<Material> MaterialList  = new ArrayList<>();
 	//A virolÃ³gusra hatÃ¡st kifejtÅ‘ effektek
-	//private ArrayList<AppliedEffect> ae = new ArrayList<>();
-	//private Timer Virologists;
 	//A virolÃ³gusnÃ¡l lÃ©vÅ‘ vÃ©dÅ‘felszerelÃ©sek
 	private ArrayList<Equipment> EquippedEquipments = new ArrayList<>();
 	//A virolÃ³gusra hatÃ¡st kifejtÅ‘ effektek.
@@ -241,63 +239,6 @@ public class Virologist {
 		{
 			m.AddNucleotid(nucleo);
 		}
-		/*
-		int v1Space = Tester.AskForInteger("Mennyi nukleotidot vehet mï¿½g fel v1? ");
-		int v2Nucleotid = Tester.AskForInteger("Mennyi nukleotid van v2-nï¿½l? ");
-		
-		//Calculate how much space V1 has
-		for(Material m: this.MaterialList) {
-			int tmp = 0;
-			if((tmp = m.getNucleotid()) > 0) {
-				v1Space = m.getMax() - tmp;
-				break;
-			}
-		}
-		//If there was no nucleotid found, set maximum value
-		if(v1Space == 0) {
-			//Assuming maximum value of NucleotidMax and AminoAcidMax is equal
-			v1Space = this.MaterialList.get(0).getMax();
-		}
-		
-		//Calculate how much nucleotid V2 has
-		for(Material m: v2.MaterialList) {
-			int tmp = 0;
-			if((tmp = m.getNucleotid()) > 0) {
-				v2Nucleotid = tmp;
-				break;
-			}
-		}
-		
-		if(v1Space < i || v2Nucleotid < i)
-		{	
-			if(v1Space < v2Nucleotid)
-			{
-				for(Material v1material : v2.getMaterialList())
-					v1material.SubtractNucleotid(v1Space);
-				for(Material v2material : MaterialList)
-					v2material.AddNucleotid(v1Space);
-			} else {
-				for(Material v1material : v2.getMaterialList())
-					v1material.SubtractNucleotid(v2Nucleotid);
-				for(Material v2material : MaterialList)
-					v2material.AddNucleotid(v2Nucleotid);
-			}
-		} else 
-		{
-			for(Material v1material : v2.getMaterialList())
-				v1material.SubtractNucleotid(i);
-			for(Material v2material : MaterialList)
-				v2material.AddNucleotid(i);
-		}*/
-		/*
-		v.getMaterialList().forEach((mat) -> {
-			if (
-					mat.SubtractNucleotid(i)
-			)
-				this.getMaterialList().forEach((a) -> 
-					a.AddNucleotid(i)
-				);
-		});*/
 	}
 	/**
 	 * AminÃ³sav lopÃ¡s
@@ -334,64 +275,6 @@ public class Virologist {
 			m.AddAminoAcid(amino);
 		}
 		
-		/*
-		int v1Space = Tester.AskForInteger("Mennyi aminosavat vehet mï¿½g fel v1? ");
-		int v2AminoAcid = Tester.AskForInteger("Mennyi aminosav van v2-nï¿½l? ");
-		
-		//Calculate how much space V1 has
-		for(Material m: this.MaterialList) {
-			int tmp = 0;
-			if((tmp = m.getAminoAcid()) > 0) {
-				v1Space = m.getMax() - tmp;
-				break;
-			}
-		}
-		//If there was no AminoAcid found, set maximum value
-		if(v1Space == 0) {
-			//Assuming maximum value of NucleotidMax and AminoAcidMax is equal
-			v1Space = this.MaterialList.get(0).getMax();
-		}
-				
-		//Calculate how much nucleotid V2 has
-		for(Material m: v2.MaterialList) {
-			int tmp = 0;
-			if((tmp = m.getAminoAcid()) > 0) {
-				v2AminoAcid = tmp;
-				break;
-			}
-		}
-		
-		if(v1Space < i || v2AminoAcid < i)
-		{	
-			if(v1Space < v2AminoAcid)
-			{
-				for(Material v1material : v2.getMaterialList())
-					v1material.SubtractAminoAcid(v1Space);
-				for(Material v2material : MaterialList)
-					v2material.AddAminoAcid(v1Space);
-			} else {
-				for(Material v1material : v2.getMaterialList())
-					v1material.SubtractAminoAcid(v2AminoAcid);
-				for(Material v2material : MaterialList)
-					v2material.AddAminoAcid(v2AminoAcid);
-			}
-		} else 
-		{
-			for(Material v1material : v2.getMaterialList())
-				v1material.SubtractAminoAcid(i);
-			for(Material v2material : MaterialList)
-				v2material.AddAminoAcid(i);
-		}
-		*/
-		/*
-		v.getMaterialList().forEach((mat) -> {
-			if (
-					mat.SubtractAminoAcid(i)
-				)
-				this.getMaterialList().forEach((a) -> 
-					a.AddAminoAcid(i)
-				);
-		});*/
 	}
 	
 	/**
@@ -432,8 +315,7 @@ public class Virologist {
 	 * Kills the virologist
 	 * and makes the axe unusable
 	 * @param axe
-	 * 
-	 * TODO: properly kill the virologist, by also removing it from Timer
+	 *
 	 */
 	public void Kill(Axe axe) {
 		if(Stunned()) {
@@ -525,8 +407,9 @@ public class Virologist {
 		if (eq.GetEffect() == null) {
 			UnEquip(eq);
 			EquipmentInventory.remove(eq);
-		} else
-		eq.Discard(this);
+		} else {
+			eq.Discard(this);
+		}
 	}
 	
 
@@ -546,7 +429,6 @@ public class Virologist {
 			CodeList.add(gc);
 		}	
 		if (Game.CompareG(CodeList)) {
-			//System.out.println("GG EZ");
 			won = true;
 		}
 			
@@ -595,7 +477,7 @@ public class Virologist {
 	}
 
 	public void setAe(ArrayList<AppliedEffect> ae) {
-		this.AppliedEffects = AppliedEffects;
+		this.AppliedEffects = ae;
 	}
 
 	public ArrayList<Agent> getAgentInventory() {
@@ -619,7 +501,7 @@ public class Virologist {
 	}
 	public void YourTurn()
 	{
-		setMovementPoints(DefaultMovementPoints);
+		setMovementPoints(DEFAULTMOVEMENTPOINTS);
 	}
 	@Override
 	public String toString() {
