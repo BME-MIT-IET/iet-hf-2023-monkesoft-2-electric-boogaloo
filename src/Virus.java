@@ -19,11 +19,7 @@ public class Virus extends Agent {
 	public Virus(Agent a, int id) {
 		super(a, id);
 	}
-/*
-	public Virus(Effect e, Material cost, int time) {
-		super(e, cost, time);
-	}
-*/
+	
 	public Virus(Effect Eff) {
 		super(Eff);
 	}
@@ -52,7 +48,6 @@ public class Virus extends Agent {
 		} //If a new AppliedEffect has to be created
 		else {
 			this.getEff().Apply(v);
-			//new AppliedEffect(v, this.getEff(), 5);
 		}
 		
 		return;

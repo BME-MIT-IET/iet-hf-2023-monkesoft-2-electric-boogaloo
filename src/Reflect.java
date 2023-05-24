@@ -52,7 +52,7 @@ public class Reflect extends Effect {
 	}
 
 	public void Apply(Virologist v) {
-		AppliedEffect ae = new AppliedEffect(v, this, -1);
+		new AppliedEffect(v, this, -1);
 		return;
 	}
 

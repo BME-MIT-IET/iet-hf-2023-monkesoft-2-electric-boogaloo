@@ -59,7 +59,6 @@ public class Interface{
 		String s = command + " ";
 		for(Object a : args)
 			s += a.toString() + " ";
-		//Println(s);
 		processCommand(s);
 	}
 	
@@ -85,7 +84,6 @@ public class Interface{
 				e.printStackTrace();
 			}
 		}
-		// processInput(System.in, false);
 		
 		view = new View(this);
 	}
@@ -134,17 +132,14 @@ public class Interface{
 	void Print(String s)
 	{
 		output += s;
-		//System.out.print(s);
 	}
 	void Println(String s)
 	{
 		output += s + "\n";
-		//System.out.println(s);
 	}
 	void Println()
 	{
 		output += "\n";
-		//System.out.println();
 	}
 	/**
 	 * @param in The input stream containing commands
@@ -184,11 +179,6 @@ public class Interface{
 			args = new String[0];
 		else
 			args = splitCommand(line.substring(cut + 1));
-		/*
-		Println("command name: \"" + name +"\"");
-		for(String a : args) 
-			Println("args: \"" + a +"\"");
-		*/
 		try {
 			Command command = commands.get(name);
 			command.execute(args);
@@ -207,19 +197,21 @@ public class Interface{
 	{
 		return command.split(" (?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 	}
+
+	String nf = " not found";
 	
 	GeneticCode getGeneticCode(String type) throws ArgumentException
 	{
 		GeneticCode res = game.FindGeneticCode(type.toLowerCase());
 		if(res == null)
-			throw new ArgumentException("Genetic code " + type + " not found");
+			throw new ArgumentException("Genetic code " + type + nf);
 		return res;
 	}
 	Effect getEffect(String type) throws ArgumentException 
 	{
 		Effect res = game.FindEffect(type.toLowerCase());
 		if(res == null)
-			throw new ArgumentException("Effect " + type + " not found");
+			throw new ArgumentException("Effect " + type + nf);
 		return res;
 	}
 	Equipment createEquipment(String type, int id) throws ArgumentException
@@ -240,7 +232,7 @@ public class Interface{
 				eq = new Axe(id);
 				break;
 			default:
-				throw new ArgumentException("Equipment type " + type + " not found");
+				throw new ArgumentException("Equipment type " + type + nf);
 		}
 		return eq;
 	}
@@ -249,7 +241,7 @@ public class Interface{
 		Field res = Field.list.get(id);
 		if(res == null)
 		{
-			throw new ArgumentException("Field " + id + " not found");
+			throw new ArgumentException("Field " + id + nf);
 		}
 		return res;
 	}
@@ -257,7 +249,7 @@ public class Interface{
 	{
 		Virologist v = Virologist.list.get(id);
 		if(v == null)
-			throw new ArgumentException("Virologist " + id + " not found");
+			throw new ArgumentException("Virologist " + id + nf);
 		return v;
 	}
 
@@ -972,7 +964,7 @@ public class Interface{
 				}
 			}
 			if(virus == null)
-				throw new ArgumentException("Virus id " + virus_id + " not found.");
+				throw new ArgumentException("Virus id " + virus_id + nf);
 			
 			v.UseAgent(virus, v2);
 		}
@@ -1007,7 +999,7 @@ public class Interface{
 				}
 			}
 			if(vaccine == null)
-				throw new ArgumentException("Vaccine id " + vaccine_id + " not found.");
+				throw new ArgumentException("Vaccine id " + vaccine_id + nf);
 			
 			v.UseAgent(vaccine, v);
 		}
@@ -1068,7 +1060,7 @@ public class Interface{
 					if(e.Id == id)
 						eq = e;
 				if(eq == null)
-					throw new ArgumentException("Equipment id " + id + " not found."); 
+					throw new ArgumentException("Equipment id " + id + nf); 
 				v.StealEq(v2, eq);
 			} else 
 			{
@@ -1101,7 +1093,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("Equipment id " + id + " not found."); 
+				throw new ArgumentException("Equipment id " + id + nf); 
 			v.Equip(eq);
 		}
 		public String getName() {
@@ -1129,7 +1121,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("Equipment id " + id + " not found."); 
+				throw new ArgumentException("Equipment id " + id + nf); 
 			v.UnEquip(eq);
 		}
 		public String getName() {
@@ -1160,7 +1152,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("Equipment id " + id + " not found."); 
+				throw new ArgumentException("Equipment id " + id + nf); 
 			v.DisCardEquipment(eq);
 		}
 		public String getName() {
@@ -1234,7 +1226,7 @@ public class Interface{
 					axe = (Axe) e;
 			if(axe == null)
 			{
-				throw new ArgumentException("Axe id " + axe_id + " not found");
+				throw new ArgumentException("Axe id " + axe_id + nf);
 			}
 			v.UseEquipment(axe, v2);
 		}

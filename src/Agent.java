@@ -31,14 +31,14 @@ public abstract class Agent {
 
 	static HashMap<Integer, Agent> list = new HashMap<Integer, Agent>();
 	int Id = 0;
-	public Agent (Agent a, int id) {
+	protected Agent (Agent a, int id) {
 		setId(id);
 		this.Time = a.Time;
 		this.Cost = a.Cost;
 		this.Eff = a.Eff;
 	}
-	public Agent(Effect e) {
-		Eff= e;	
+	protected Agent(Effect e) {
+		Eff= e;
 		Time = 10;
 		Cost = 10;
 	}
