@@ -60,6 +60,7 @@ public class AppliedEffect {
 	/**
 	 * CsĂ¶kkenti a LejĂˇrati_idĹ‘ Ă©rtĂ©kĂ©t eggyel.
 	 */
+	
 	public void DecrTime(Virologist v) {
 		Time--;
 	}

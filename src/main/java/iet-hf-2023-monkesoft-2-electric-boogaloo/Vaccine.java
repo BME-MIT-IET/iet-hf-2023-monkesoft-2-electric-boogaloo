@@ -56,7 +56,6 @@ public class Vaccine extends Agent {
 		//If there is an ae that needs to be extended
 		if(effectToExtend != null) {
 			v.AddEffect(effectToExtend);
-			//effectToExtend.IncrTime(this.getTime());
 		} //If there is a viruseffect that needs to be removed 
 		else if(effectToKill != null) {
 			//Kill the viruseffect
@@ -67,16 +66,9 @@ public class Vaccine extends Agent {
 		else {
 			//Constructor adds the effect automatically
 			//Time value positive, because vaccine effects decay
-			
-			
-			//THIS WAS UPDATED
-			//new AppliedEffect(v, this.getEff(), 5);
-			//TO THIS:
 			Individual ind = new Individual(this.getEff());
 			new AppliedEffect(v, ind, 5);
 		}
-        
-		//this.getEff().Apply(v);
 		
 		return;
 	}

@@ -20,26 +20,26 @@
 public abstract class Material {
 	public static final int MAX = 25;
 	private int Amount;
-	private int Max;
+	private int MaxAmount;
 	
-	public Material(int amount, int max) {
+	protected Material(int amount, int max) {
 		this.Amount = amount;
-		this.Max = max;
+		this.MaxAmount = max;
 	}
 	/**
-	 * MegnĂ¶veli a Max attribĂştum Ă©rtĂ©kĂ©t i-vel.
+	 * MegnĂ¶veli a MaxAmount attribĂştum Ă©rtĂ©kĂ©t i-vel.
 	 *Az objektum Ăˇltal reprezentĂˇlhatĂł maximĂˇlis anyagmennyisĂ©g valamilyen okbĂłl nĹ‘tt (tipikusan akkor, ha egy VirolĂłgus objektumra felkerĂĽlt valamilyen effekt, ami a maximĂˇlis anyaggyĹ±jtĹ‘ kĂ©pessĂ©get nĂ¶veli).
 	 */
 	public void IncreaseMax(int i) {
-		Max=(Max+i);
+		MaxAmount=(MaxAmount+i);
 	}
 	
 	/**
-	 * CsĂ¶kkenti a Max attribĂştum Ă©rtĂ©kĂ©t i-vel.
+	 * CsĂ¶kkenti a MaxAmount attribĂştum Ă©rtĂ©kĂ©t i-vel.
 	 *Az objektum Ăˇltal reprezentĂˇlhatĂł maximĂˇlis anyagmennyisĂ©g valamilyen okbĂłl csĂ¶kkent (tipikusan akkor, ha egy VirolĂłgus objektumrĂłl lekerĂĽlt valamilyen effekt, ami a maximĂˇlis anyaggyĹ±jtĹ‘ kĂ©pessĂ©get nĂ¶veli).
 	 */
 	public void DecreaseMax(int i) {
-		Max=(Max-i);
+		MaxAmount=(MaxAmount-i);
 	}
 
 	/**
@@ -95,8 +95,8 @@ public abstract class Material {
 	public int getMaxNucleotid() {return 0;}
 	
 	public void setAmount(int i) {
-		if(i>Max) {
-			Amount=Max;
+		if(i>MaxAmount) {
+			Amount=MaxAmount;
 		}
 		else {
 			Amount=i;
@@ -104,11 +104,11 @@ public abstract class Material {
 	}
 	
 	public void setMax(int x) {
-		this.Max = x;
+		this.MaxAmount = x;
 	}
 	
 	public int getMax() {
-		return Max;
+		return MaxAmount;
 	}
 	
 	

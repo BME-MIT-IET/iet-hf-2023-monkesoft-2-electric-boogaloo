@@ -24,7 +24,7 @@ public abstract class Equipment {
 
 	static HashMap<Integer, Equipment> list = new HashMap<Integer, Equipment>();
 	int Id = 0;
-	public Equipment(Effect e, int id) {
+	protected Equipment(Effect e, int id) {
 		this.Eff = e;
 		while(list.containsKey(id)) 
 			id++; 

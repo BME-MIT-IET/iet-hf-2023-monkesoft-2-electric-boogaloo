@@ -23,13 +23,10 @@ public class Individual extends Protection {
 	}
 	@Override
 	public boolean Protect(Agent a, Virologist v, Virologist v2) {
-		//boolean returnbool = Tester.Ask("Sikerüljön a védés?", List.of("I", "N")) == 0;
 		if(a.getEff() == this.Eff) {
 			return true;
 		}
 		return false;
-		
-		//return returnbool;
 	}
 	@Override
 	public String toString()
@@ -39,5 +36,10 @@ public class Individual extends Protection {
 	public Effect getEffect()
 	{
 		return Eff;
+	}
+
+	@Override
+	public boolean isIndividual(){
+		return true;
 	}
 }
