@@ -41,6 +41,8 @@ public class JInventory extends JPanel implements MouseListener{
 	
 	public JInventory(Interface iface, View view) 
 	{
+		this should cause a compile error lol
+
 		this.iface = iface;
 		this.view = view;
 		setPreferredSize(new Dimension(285, getHeight()));
