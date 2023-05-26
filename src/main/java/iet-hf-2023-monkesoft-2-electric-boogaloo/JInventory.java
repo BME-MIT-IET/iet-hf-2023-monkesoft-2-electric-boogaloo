@@ -1,3 +1,5 @@
+
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -76,7 +78,7 @@ public class JInventory extends JPanel implements MouseListener{
 		topPanel.setSize(getPreferredSize());
 		BufferedImage tMonke = null;
 		try {
-			tMonke = ImageIO.read(new File("resources/t.png"));
+			tMonke = ImageIO.read(new File("./src/main/resources/t.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

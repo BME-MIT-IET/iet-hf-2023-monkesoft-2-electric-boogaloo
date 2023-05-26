@@ -68,7 +68,7 @@ public class View extends JFrame implements MouseListener{
 		ep.setAlignmentX(CENTER_ALIGNMENT);
 		JLabel wintext = new JLabel("                                         GG EZ");
 		wintext.setAlignmentX(CENTER_ALIGNMENT);
-		Icon icon = new ImageIcon("resources/monki-flip-monkey.gif");
+		Icon icon = new ImageIcon("./src/main/resources/monki-flip-monkey.gif");
         JLabel label = new JLabel(icon);
         ep.add(wintext, BorderLayout.NORTH);
         ep.add(label, BorderLayout.SOUTH);
@@ -77,7 +77,7 @@ public class View extends JFrame implements MouseListener{
         end.setVisible(true);
         
         try {
-        	File audioFile = new File("resources/monkemusic.wav");
+        	File audioFile = new File("./src/main/resources/monkemusic.wav");
         	AudioInputStream audioIn = AudioSystem.getAudioInputStream(audioFile.toURI().toURL());  
         	Clip clip = AudioSystem.getClip();
         	clip.open(audioIn);

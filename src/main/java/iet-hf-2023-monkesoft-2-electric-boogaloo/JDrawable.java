@@ -46,7 +46,7 @@ public class JDrawable extends JComponent {
 	protected void setImage(String imgName)
 	{
 		try {
-		    this.img = ImageIO.read(new File("./resources/" + imgName));
+		    this.img = ImageIO.read(new File("./src/main/resources/" + imgName));
 		} catch (IOException e) {
 			System.out.println("Not found: " + imgName);
 		    e.printStackTrace();
