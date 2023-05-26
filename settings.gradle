@@ -13,4 +13,4 @@ plugins {
 }
 
 rootProject.name = 'iet-hf-2023-monkesoft-2-electric-boogaloo'
-include('lib')
+include('src')
