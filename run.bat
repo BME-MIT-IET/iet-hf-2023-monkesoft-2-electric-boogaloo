@@ -1,1 +1,1 @@
-java -classpath bin Interface
+java -classpath build/classes/java/main Interface
