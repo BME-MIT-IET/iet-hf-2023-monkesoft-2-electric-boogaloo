@@ -5,7 +5,7 @@ public class Axe extends Equipment{
 	private boolean isSharp;
 	
 	/**
-	 * iet.hf.monkesoft.electric.boogaloo.Effect of axe is NULL
+	 * Effect of axe is NULL
 	 */
 	public Axe(int id) {
 		super(null, id);
@@ -23,7 +23,7 @@ public class Axe extends Equipment{
 	}
 	
 	/**
-	 * makes isSharp false, thus making the iet.hf.monkesoft.electric.boogaloo.Axe unusable
+	 * makes isSharp false, thus making the Axe unusable
 	 */
 	public void Blunt() {
 		this.isSharp = false;

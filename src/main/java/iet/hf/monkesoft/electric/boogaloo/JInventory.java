@@ -194,7 +194,7 @@ public class JInventory extends JPanel implements MouseListener{
 		JPanel inventoryPanel = new JPanel();
 		inventoryPanel.setLayout(new BoxLayout(inventoryPanel, BoxLayout.PAGE_AXIS));
 		inventoryPanel.setBackground(Color.darkGray);
-		JLabel ei = new JLabel("iet.hf.monkesoft.electric.boogaloo.Equipment Inventory:");
+		JLabel ei = new JLabel("Equipment Inventory:");
 		ei.setForeground(Color.white);
 		inventoryPanel.add(ei);
 		equipments = new JPanel();
@@ -274,7 +274,7 @@ public class JInventory extends JPanel implements MouseListener{
 		this.lastVirologist = virologist;
 		// numbers
 		aminoLabel.setText("  Amino Acid: " + String.valueOf(virologist.getMaterialList().get(0).getAmount()) + "         ");
-		nucleoLabel.setText("iet.hf.monkesoft.electric.boogaloo.Nucleotid: " + String.valueOf(virologist.getMaterialList().get(1).getAmount()));
+		nucleoLabel.setText("Nucleotid: " + String.valueOf(virologist.getMaterialList().get(1).getAmount()));
 		moveLabel.setText("Moves left: " + String.valueOf(virologist.getMovementPoints()) + "  ");
 		
 		// effects
