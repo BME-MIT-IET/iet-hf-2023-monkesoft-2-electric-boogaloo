@@ -36,6 +36,10 @@ public class JVirologist extends JDrawable implements MouseListener{
 	 * Kirajzolja a virológust
 	 * */
 	protected void paintComponent(Graphics g) {
+		if(virologist.isDead())
+		{
+			return;
+		}
 		super.paintComponent(g);
 		if(highlighted)
 		{
