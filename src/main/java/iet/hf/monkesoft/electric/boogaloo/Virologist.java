@@ -47,6 +47,16 @@ public class Virologist {
 	static HashMap<Integer, Virologist> list = new HashMap<Integer, Virologist>();
 	int Id = 0;
 	private boolean won = false;
+
+	public boolean isDead() {
+		return dead;
+	}
+
+	public void SetDead(boolean dead) {
+		this.dead = dead;
+	}
+
+	private boolean dead = false;
 	public Virologist(int id)
 	{
 		while(list.containsKey(id)) 
@@ -319,14 +329,15 @@ public class Virologist {
 	 *
 	 */
 	public void Kill(Axe axe) {
-		if(Stunned()) {
-			return;
-		}
 		//Remove from field
 		this.getField().Remove(this);
+
 		//Make the axe blunt
 		axe.Blunt();
-		
+
+		SetField(null);
+
+		SetDead(true);
 	}
 	
 	/**
@@ -500,9 +511,19 @@ public class Virologist {
 	public ArrayList<Equipment> getEquipmentInventory() {
 		return EquipmentInventory;
 	}
-	public void YourTurn()
+
+	/**
+	 *
+	 * @return true if the Virologist is dead thus cant have a turn
+	 */
+	public boolean YourTurn()
 	{
+		if(isDead())
+		{
+			return false;
+		}
 		setMovementPoints(DEFAULTMOVEMENTPOINTS);
+		return true;
 	}
 	@Override
 	public String toString() {
@@ -544,5 +565,5 @@ public class Virologist {
 	public void setMovementPoints(int movementPoints) {
 		MovementPoints = movementPoints;
 	}
-	
+
 }
