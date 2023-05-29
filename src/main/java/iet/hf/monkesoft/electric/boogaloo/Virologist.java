@@ -319,14 +319,11 @@ public class Virologist {
 	 *
 	 */
 	public void Kill(Axe axe) {
-		if(Stunned()) {
-			return;
-		}
 		//Remove from field
 		this.getField().Remove(this);
+
 		//Make the axe blunt
 		axe.Blunt();
-		
 	}
 	
 	/**
