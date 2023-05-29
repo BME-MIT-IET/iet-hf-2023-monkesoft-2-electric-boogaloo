@@ -36,10 +36,6 @@ public class JVirologist extends JDrawable implements MouseListener{
 	 * Kirajzolja a virológust
 	 * */
 	protected void paintComponent(Graphics g) {
-		if(virologist.isDead())
-		{
-			return;
-		}
 		super.paintComponent(g);
 		if(highlighted)
 		{
@@ -54,9 +50,15 @@ public class JVirologist extends JDrawable implements MouseListener{
 	 * Megváltoztatja az objektum kirajzolt képét. Kör kezdetekor, illetve kör végén hívódik meg. 
 	 * Ilyen értelemben két állapota van egy virológusnak: vagy az ő köre van, vagy nem. 
 	 * Ennek megfelelő képre változtat.
+	 * Ha halott, akkor mindenképpen az ahhoz tartozó képre vált
 	 * */
 	public void ChangePicture() {
-		setImage(view.getCurrentVirologist() == virologist ? IMG_VIROLOGIST_ACTUAL : IMG_VIROLOGIST);
+		if(virologist.isDead())
+		{
+			setImage(IMG_VIROLOGIST_DEAD);
+		} else {
+			setImage(view.getCurrentVirologist() == virologist ? IMG_VIROLOGIST_ACTUAL : IMG_VIROLOGIST);
+		}
 	}
 
 
@@ -75,7 +77,6 @@ public class JVirologist extends JDrawable implements MouseListener{
 	}
 	
 	public void mouseReleased(MouseEvent e) {
-		System.out.println("DEBUG: virologist click");
 		view.onVirologistClick(virologist);
 	}
 

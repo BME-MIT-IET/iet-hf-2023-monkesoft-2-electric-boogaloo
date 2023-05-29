@@ -303,14 +303,21 @@ public class View extends JFrame implements MouseListener{
 	public void onEndTurn() {
 		this.getCurrentVirologist().EndTurn();
 		iface.GUIcommand("end");
-		for(JVirologist jv : virologists)
-		{
-			jv.ChangePicture();
-		}
+		updateVirologistImages();
 		inventoryPanel.updateContent(getCurrentVirologist());
 		onStateUpdate(ViewState.NONE);
 		repaint();
 	}
+
+	public void updateVirologistImages()
+	{
+		for(JVirologist jv : virologists)
+		{
+			jv.ChangePicture();
+		}
+		repaint();
+	}
+
 	
 	/**
 	 * Visszaadja az Ã©ppen soron lÃ©vÅ‘ virolÃ³gust
@@ -337,6 +344,7 @@ public class View extends JFrame implements MouseListener{
 	}
 	public void onStateUpdate(ViewState s)
 	{
+		updateVirologistImages();
 		// remove temp options 
 		inventoryPanel.setOptionButtons(null);
 		viewState = s;
