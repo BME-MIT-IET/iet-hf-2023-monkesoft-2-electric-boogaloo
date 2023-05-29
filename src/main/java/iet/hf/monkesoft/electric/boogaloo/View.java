@@ -96,23 +96,30 @@ public class View extends JFrame implements MouseListener{
 		// generate players
 		int numberOfPlayers = 0;
 		String extra = "";
-		while(true){
-			String s = (String)JOptionPane.showInputDialog(
-                this,
-                "Number of players:\n"+ extra,
-                "Szia uram",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                null,
-                "2"
-            );
-	
+		boolean start = false;
+		while (!start) {
+			String s = (String) JOptionPane.showInputDialog(
+					this,
+					"Number of players:\n" + extra,
+					"Szia uram",
+					JOptionPane.PLAIN_MESSAGE,
+					null,
+					null,
+					"2");
+
 			if ((s != null) && (s.length() > 0)) {
 				try {
 					numberOfPlayers = Integer.parseInt(s);
-					break;
-				} catch(NumberFormatException e)
-				{
+					if (numberOfPlayers < 0) {
+						extra = "Mi van, negatív?";
+					} else if (numberOfPlayers == 0) {
+						extra = "Azért az elég unalmas lenne";
+					} else if (numberOfPlayers > 24) {
+						extra = "Annyi monke a világon nincs!";
+					} else {
+						start = true;
+					}
+				} catch (NumberFormatException e) {
 					extra = "Numbert write-olj te buta majom";
 				}
 			}
