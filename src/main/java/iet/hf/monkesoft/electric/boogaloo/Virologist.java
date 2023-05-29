@@ -47,6 +47,16 @@ public class Virologist {
 	static HashMap<Integer, Virologist> list = new HashMap<Integer, Virologist>();
 	int Id = 0;
 	private boolean won = false;
+
+	public boolean isDead() {
+		return dead;
+	}
+
+	public void SetDead(boolean dead) {
+		this.dead = dead;
+	}
+
+	private boolean dead = false;
 	public Virologist(int id)
 	{
 		while(list.containsKey(id)) 
@@ -324,6 +334,10 @@ public class Virologist {
 
 		//Make the axe blunt
 		axe.Blunt();
+
+		SetField(null);
+
+		SetDead(true);
 	}
 	
 	/**
@@ -541,5 +555,5 @@ public class Virologist {
 	public void setMovementPoints(int movementPoints) {
 		MovementPoints = movementPoints;
 	}
-	
+
 }
