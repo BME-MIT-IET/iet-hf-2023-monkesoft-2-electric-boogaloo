@@ -511,9 +511,19 @@ public class Virologist {
 	public ArrayList<Equipment> getEquipmentInventory() {
 		return EquipmentInventory;
 	}
-	public void YourTurn()
+
+	/**
+	 *
+	 * @return true if the Virologist is dead thus cant have a turn
+	 */
+	public boolean YourTurn()
 	{
+		if(isDead())
+		{
+			return false;
+		}
 		setMovementPoints(DEFAULTMOVEMENTPOINTS);
+		return true;
 	}
 	@Override
 	public String toString() {
