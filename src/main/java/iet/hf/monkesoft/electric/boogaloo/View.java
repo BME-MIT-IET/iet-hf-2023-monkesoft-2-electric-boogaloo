@@ -166,10 +166,10 @@ public class View extends JFrame implements MouseListener{
 						//Lab
 						type = 1;
 					} else if( randomNumber < fieldRatio + labRatio + storageRatio ) {
-						//iet.hf.monkesoft.electric.boogaloo.Storage
+						//Storage
 						type = 2;
 					} else {
-						//iet.hf.monkesoft.electric.boogaloo.Shelter
+						//Shelter
 						type = 3;
 					}
 				}

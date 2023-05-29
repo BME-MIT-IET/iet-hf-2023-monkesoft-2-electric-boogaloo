@@ -4,7 +4,7 @@ plugins {
 }
 
 application {
-    mainClassName = 'Interface'
+    mainClassName = 'iet.hf.monkesoft.electric.boogaloo.Interface'
 }
 
 tasks.withType(JavaCompile) {

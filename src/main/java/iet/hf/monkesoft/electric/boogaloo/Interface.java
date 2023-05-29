@@ -73,7 +73,7 @@ public class Interface{
 			try {
 				commands.put(
 					name,
-					(Command) Class.forName("iet.hf.monkesoft.electric.boogaloo.Interface$" + name)
+						(Command) Class.forName("iet.hf.monkesoft.electric.boogaloo.Interface$" + name)
 					// nested non-static class konstruktor�nak elej�re odaker�l a k�ls� oszt�ly
 						.getDeclaredConstructor(Interface.class)
 						.newInstance(this)
@@ -212,7 +212,7 @@ public class Interface{
 	{
 		Effect res = game.FindEffect(type.toLowerCase());
 		if(res == null)
-			throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Effect " + type + nf);
+			throw new ArgumentException("Effect " + type + nf);
 		return res;
 	}
 	Equipment createEquipment(String type, int id) throws ArgumentException
@@ -233,7 +233,7 @@ public class Interface{
 				eq = new Axe(id);
 				break;
 			default:
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Equipment type " + type + nf);
+				throw new ArgumentException("Equipment type " + type + nf);
 		}
 		return eq;
 	}
@@ -242,7 +242,7 @@ public class Interface{
 		Field res = Field.list.get(id);
 		if(res == null)
 		{
-			throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Field " + id + nf);
+			throw new ArgumentException("Field " + id + nf);
 		}
 		return res;
 	}
@@ -250,7 +250,7 @@ public class Interface{
 	{
 		Virologist v = Virologist.list.get(id);
 		if(v == null)
-			throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Virologist " + id + nf);
+			throw new ArgumentException("Virologist " + id + nf);
 		return v;
 	}
 
@@ -634,7 +634,7 @@ public class Interface{
 				Field a = getField(Integer.parseInt(args[0]));
 				Field b = getField(Integer.parseInt(args[1]));
 				if(a == b)
-					throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Field cannot be neighbour with itself");
+					throw new ArgumentException("Field cannot be neighbour with itself");
 				
 				a.AddNeighbour(b);
 				b.AddNeighbour(a);		
@@ -836,7 +836,7 @@ public class Interface{
 					nucleo += m.getNucleotid();
 				}
 				Println("\tAmino acid: " + amino);
-				Println("\tiet.hf.monkesoft.electric.boogaloo.Nucleotid: " + nucleo);
+				Println("\tNucleotid: " + nucleo);
 				
 				Println("Equipments:");
 				Println("\tEquipped:");
@@ -846,7 +846,7 @@ public class Interface{
 				for(Equipment eq : v.getEquipmentInventory())
 					Println("\t\t("+ eq.Id + ") " + eq.getType());
 				
-				Println("iet.hf.monkesoft.electric.boogaloo.Agent inventory:");
+				Println("Agent inventory:");
 				ArrayList<Agent> viruses = new ArrayList<Agent>();
 				ArrayList<Agent> vaccines = new ArrayList<Agent>();
 				for(Agent a : v.getAgentInventory())
@@ -871,7 +871,7 @@ public class Interface{
 					Println("\t" + g.getName());
 				
 				if (v.haveWon()) {
-					Println("iet.hf.monkesoft.electric.boogaloo.Virologist (" + v.Id + ") have won the game!");
+					Println("Virologist (" + v.Id + ") have won the game!");
 				}
 				
 				if(!v.Stunned())
@@ -926,7 +926,7 @@ public class Interface{
 				Field f2 = v.getField();
 				if(f == f2)
 				{
-					Println("iet.hf.monkesoft.electric.boogaloo.Virologist cannot step because the fields are not neighbours.");
+					Println("Virologist cannot step because the fields are not neighbours.");
 				}
 			} catch (NumberFormatException e)
 			{
@@ -965,7 +965,7 @@ public class Interface{
 				}
 			}
 			if(virus == null)
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Virus id " + virus_id + nf);
+				throw new ArgumentException("Virus id " + virus_id + nf);
 			
 			v.UseAgent(virus, v2);
 		}
@@ -1000,7 +1000,7 @@ public class Interface{
 				}
 			}
 			if(vaccine == null)
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Vaccine id " + vaccine_id + nf);
+				throw new ArgumentException("Vaccine id " + vaccine_id + nf);
 			
 			v.UseAgent(vaccine, v);
 		}
@@ -1061,7 +1061,7 @@ public class Interface{
 					if(e.Id == id)
 						eq = e;
 				if(eq == null)
-					throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Equipment id " + id + nf);
+					throw new ArgumentException("Equipment id " + id + nf);
 				v.StealEq(v2, eq);
 			} else 
 			{
@@ -1094,7 +1094,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Equipment id " + id + nf);
+				throw new ArgumentException("Equipment id " + id + nf);
 			v.Equip(eq);
 		}
 		public String getName() {
@@ -1122,7 +1122,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Equipment id " + id + nf);
+				throw new ArgumentException("Equipment id " + id + nf);
 			v.UnEquip(eq);
 		}
 		public String getName() {
@@ -1153,7 +1153,7 @@ public class Interface{
 				if(e.Id == id)
 					eq = e;
 			if(eq == null)
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Equipment id " + id + nf);
+				throw new ArgumentException("Equipment id " + id + nf);
 			v.DisCardEquipment(eq);
 		}
 		public String getName() {
@@ -1194,7 +1194,7 @@ public class Interface{
 				v.MakeVaccine(gc, id);
 			
 			if(count == v.getAgentInventory().size())
-				Println("iet.hf.monkesoft.electric.boogaloo.Virologist can not create " + args[1] + " virus. There is not enough material.");
+				Println("Virologist can not create " + args[1] + " virus. There is not enough material.");
 		}
 		public String getName() {
 			return "make virus/vaccine GENETIC_CODE [AGENT_ID]";
@@ -1227,7 +1227,7 @@ public class Interface{
 					axe = (Axe) e;
 			if(axe == null)
 			{
-				throw new ArgumentException("iet.hf.monkesoft.electric.boogaloo.Axe id " + axe_id + nf);
+				throw new ArgumentException("Axe id " + axe_id + nf);
 			}
 			v.UseEquipment(axe, v2);
 		}

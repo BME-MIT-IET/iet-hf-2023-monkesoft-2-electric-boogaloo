@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 
 
 /**
- * A iet.hf.monkesoft.electric.boogaloo.JDrawable ágensek ősosztálya.
+ * A JDrawable ágensek ősosztálya.
  * */
 public class JAgent extends JDrawable implements MouseListener{
 	private Agent agent;

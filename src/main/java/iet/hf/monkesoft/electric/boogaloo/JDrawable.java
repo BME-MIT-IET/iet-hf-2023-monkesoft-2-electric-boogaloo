@@ -55,7 +55,7 @@ public class JDrawable extends JComponent {
 		}
 	}
 	/**
-	 * Kirajzolja a iet.hf.monkesoft.electric.boogaloo.JDrawable objektumot
+	 * Kirajzolja a JDrawable objektumot
 	 * */
 	@Override
 	protected void paintComponent(Graphics g) {
