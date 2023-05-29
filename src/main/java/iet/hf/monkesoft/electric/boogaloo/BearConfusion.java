@@ -9,7 +9,7 @@ public class BearConfusion extends Effect{
 	}
 	/**
 	 * Modifies the movement of v similarly to
-	 * iet.hf.monkesoft.electric.boogaloo.Confusion, but if the randomly selected field is
+	 * Confusion, but if the randomly selected field is
 	 * a storage, then every material is destroyed there.
 	 * Also, if a virologist is standing on the randomly
 	 * selected field, then this effect will spread on them.

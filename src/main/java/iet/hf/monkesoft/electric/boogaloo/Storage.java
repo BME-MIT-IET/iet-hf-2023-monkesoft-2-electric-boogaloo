@@ -18,7 +18,7 @@ public class Storage extends Field {
 		MaterialList.add(new Nucleotid(nucleo));
 	}
 	/*
-	 * If the accepted iet.hf.monkesoft.electric.boogaloo.Virologist is under iet.hf.monkesoft.electric.boogaloo.BearConfusion,
+	 * If the accepted Virologist is under BearConfusion,
 	 * Destroy all materials
 	 */
 	
@@ -80,10 +80,10 @@ public class Storage extends Field {
 			amino += m.getAminoAcid();
 			nucleo += m.getNucleotid();
 		}
-		return "\t(" + Id + ") iet.hf.monkesoft.electric.boogaloo.Storage\n"
+		return "\t(" + Id + ") Storage\n"
 			+ "\t\tMaterials:\n"
 			+ "\t\t\tAmino acid: " + amino + "\n"
-			+ "\t\t\tiet.hf.monkesoft.electric.boogaloo.Nucleotid: " + nucleo
+			+ "\t\t\tNucleotid: " + nucleo
 		;
 	}
 }

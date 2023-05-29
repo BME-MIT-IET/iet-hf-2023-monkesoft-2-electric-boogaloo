@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 /**
- * Az effekteket reprezentáló iet.hf.monkesoft.electric.boogaloo.JDrawable osztályok ősosztálya.
+ * Az effekteket reprezentáló JDrawable osztályok ősosztálya.
  * */
 public class JEffect extends JDrawable {
 	
