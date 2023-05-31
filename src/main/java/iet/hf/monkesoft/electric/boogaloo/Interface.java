@@ -65,9 +65,6 @@ public class Interface{
 	
 	public static void main(String[] args) {
 		new Interface();
-		while (true) {
-			// test soarcloud
-		}
 	}
 	Interface(){
 		game = new Game();
