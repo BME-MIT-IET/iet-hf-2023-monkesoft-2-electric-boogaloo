@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -18,7 +19,7 @@ public class View extends JFrame implements MouseListener{
 	private ArrayList<JVirologist> virologists =  new ArrayList<>();
 	private ArrayList<JEquipment> equipments =  new ArrayList<>();
 	
-	private Random rnd = new Random();
+	private SecureRandom rnd = new SecureRandom();
 
 	Interface iface;
 	JPanel map;
