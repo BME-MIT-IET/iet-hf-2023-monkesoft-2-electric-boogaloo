@@ -378,22 +378,11 @@ public class Interface{
 		public void execute(String [] args) throws ArgumentException
 		{
 			validate(args, 1);
-			ObjectInputStream in = null;
-			try {
-				in = new ObjectInputStream(new FileInputStream(args[0]));
+			try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(args[0]))) {
 				game = (Game) in.readObject();
-				in.close();
 			} catch (IOException | ClassNotFoundException e) {
 				Println("File error:");
 				e.printStackTrace();
-			} finally {
-				if (in != null){
-					try {
-						in.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
 			}
 		}
 		public String getName() {
@@ -407,23 +396,12 @@ public class Interface{
 		public void execute(String [] args) throws ArgumentException
 		{
 			validate(args, 1);
-			ObjectOutputStream objectOutputStream = null;
-			try {
-				objectOutputStream = new ObjectOutputStream(new FileOutputStream(args[0]));
+			try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(args[0]))){
 				objectOutputStream.writeObject(game);
 				objectOutputStream.flush();
-				objectOutputStream.close();
 			} catch (IOException e) {
 				Println("File error:");
 				e.printStackTrace();
-			} finally {
-				if (objectOutputStream != null){
-					try {
-						objectOutputStream.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
 			}
 		}
 		public String getName() {
