@@ -30,7 +30,6 @@ public abstract class Effect {
 	public void Apply(Virologist v) {
 		///Overridden in all effects with -1 Time
 		new AppliedEffect(v, this);
-		return;
 	}
 
 	public void Die(Virologist v) {

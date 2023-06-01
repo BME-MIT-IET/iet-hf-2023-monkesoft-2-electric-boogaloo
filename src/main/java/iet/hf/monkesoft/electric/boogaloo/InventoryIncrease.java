@@ -26,7 +26,7 @@ public class InventoryIncrease extends Effect {
 	 */
 	@Override
 	public void Apply(Virologist v) {
-		v.getMaterialList().forEach( (m) -> m.IncreaseMax(m.getMax()));
+		v.getMaterialList().forEach( m -> m.IncreaseMax(m.getMax()));
 		new AppliedEffect(v, this, -1);
 	}
 	
@@ -38,7 +38,7 @@ public class InventoryIncrease extends Effect {
 	public void Die(Virologist v) {
 		v.RemoveEffect(this);
 		for (int i = 0; i < v.getMaterialList().size(); i++) {
-			v.getMaterialList().forEach( (m) -> m.DecreaseMax(m.getMax()));
+			v.getMaterialList().forEach( m -> m.DecreaseMax(m.getMax()));
 		}
 	}
 }

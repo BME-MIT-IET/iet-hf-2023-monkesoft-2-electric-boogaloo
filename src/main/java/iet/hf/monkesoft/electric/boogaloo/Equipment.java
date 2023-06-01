@@ -24,7 +24,7 @@ import java.util.HashMap;
 public abstract class Equipment {
 	private Effect Eff;
 
-	static HashMap<Integer, Equipment> list = new HashMap<Integer, Equipment>();
+	static HashMap<Integer, Equipment> list = new HashMap<>();
 	int Id = 0;
 	protected Equipment(Effect e, int id) {
 		this.Eff = e;

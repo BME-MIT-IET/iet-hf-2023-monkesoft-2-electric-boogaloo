@@ -270,7 +270,7 @@ public class Interface{
 		}
 	}
 	abstract class Command {
-		protected Command() {};
+		protected Command() {}
 		/**
 		 * Executes the command
 		 * @param args Command line arguments
@@ -342,10 +342,10 @@ public class Interface{
 		public void execute(String [] args) throws ArgumentException
 		{
 			validate(args, 1);
-			if(args[0].toLowerCase().equals("on"))
+			if(args[0].equalsIgnoreCase("on"))
 			{
 				Random.isDeterministic = false;
-			} else if(args[0].toLowerCase().equals("off")){
+			} else if(args[0].equalsIgnoreCase("off")){
 				try {
 					if(args[1].equals("false"))
 					{
@@ -443,13 +443,12 @@ public class Interface{
 			} catch (IOException e) {
 				throw new ArgumentException("File \"" + filename1 + "\" not found");
 			}
-			ArrayList<String> actualLines = new ArrayList<String>(Arrays.asList(output.split("\n")));
+			ArrayList<String> actualLines = new ArrayList<>(Arrays.asList(output.split("\n")));
 			int i = 1;
 			boolean ok = true;
 			for(i = 0; i < expectedLines.size(); i++)
 			{
-				if(!expectedLines.get(i).trim().toLowerCase()
-					.equals(actualLines.get(i).trim().toLowerCase()))
+				if(!expectedLines.get(i).trim().equalsIgnoreCase(actualLines.get(i).trim().toLowerCase()))
 				{
 					ok = false;
 					break;
@@ -516,9 +515,9 @@ public class Interface{
 					throw new ArgumentException("FIELD_ID must be a number");
 				}
 			} 
-			if(args[1].toLowerCase().equals("i"))
+			if(args[1].equalsIgnoreCase("i"))
 				f = new Laboratory(getGeneticCode(args[0]), getEffect("bearconfusion"), id);
-			else if(args[1].toLowerCase().equals("n"))
+			else if(args[1].equalsIgnoreCase("n"))
 				f = new Laboratory(getGeneticCode(args[0]), id);
 			else
 				throw new ArgumentException("2nd argument must be i or n");
@@ -728,7 +727,7 @@ public class Interface{
 				throw new ArgumentException("VIROLOGIST_ID must be a number");
 			}
 			Effect e;
-			if(args[1].toLowerCase().equals("individual"))
+			if(args[1].equalsIgnoreCase("individual"))
 			{
 				if(args.length > 2)
 				{
@@ -843,8 +842,8 @@ public class Interface{
 					Println("\t\t("+ eq.Id + ") " + eq.getType());
 				
 				Println("Agent inventory:");
-				ArrayList<Agent> viruses = new ArrayList<Agent>();
-				ArrayList<Agent> vaccines = new ArrayList<Agent>();
+				ArrayList<Agent> viruses = new ArrayList<>();
+				ArrayList<Agent> vaccines = new ArrayList<>();
 				for(Agent a : v.getAgentInventory())
 					if(a.getClass() == Virus.class)
 						viruses.add(a);

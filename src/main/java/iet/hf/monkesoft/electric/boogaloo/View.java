@@ -33,7 +33,7 @@ public class View extends JFrame implements MouseListener{
 		VIROLOGISTSELECTTOVIRUS, 
 		VIROLOGISTSELECTTOKILL,
 		VIROLOGISTSELECTTOLOOT
-	};
+	}
 	
 	ViewState viewState = ViewState.NONE;
 	Agent selectedAgent;
@@ -130,7 +130,7 @@ public class View extends JFrame implements MouseListener{
 		//List that countains the position of at least 3 distinct labs
 		//If these postitions are the ones in the loop, automatically
 		//Generate a laboratory to ensure there are at least 3
-		ArrayList<Integer> listOfLabPositions = new ArrayList<Integer>();
+		ArrayList<Integer> listOfLabPositions = new ArrayList<>();
 		while(listOfLabPositions.size() < 3) {
 			int randomIndex = rnd.nextInt(mapwidth * mapwidth);
 			if(!listOfLabPositions.contains(randomIndex)) {
