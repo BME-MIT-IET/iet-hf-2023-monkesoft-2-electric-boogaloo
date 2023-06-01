@@ -40,10 +40,7 @@ Megegyezik az elvárttal.
 ### Elvárt működés
 Az adott tárgy eltűnik az inventory-ból és megsemmisül
 ### Tényleges működés
-Megegyezik az elvárttal. 
-**Kivétel a bag**
-#### Hiba a táskával
-Táska nem eldobható _(discard)_ tárgy.
+Megegyezik az elvárttal (kivéve a táska).
 
 ## Védőfelszerelés felvétele a virolóusra
 ### Elvárt működés
@@ -120,8 +117,7 @@ Megegyezik az elvárttal.
 ## Move = End Turn
 Ha a virológus meghal, néha előfordul, hogy a 'move' gomb úgy viselkedik mint az end turn. Az adott karakternek nem muszáj halottnak lennie lehet stun-olva is.
 
-    A hibát előhozni egy másik később leírt hiba segítségével a legkönnyebb: 
-
+    A hibát előhozni egy másik később leírt hiba segítségével a legkönnyebb:
     - két játékos kell és mind a kettőnél kell legyen balta. Az első játékos megöli a másodikat a baltával majd rányom az 'end turn' gombra. Ekkor a második játékos is megöli az elsőt a baltával. Ekkor nagy valószínűséggel a második játékos 'move' gombja produkálja a hibát.
 
 # Nem rendeltetésszerű használatból fakadó hibák
