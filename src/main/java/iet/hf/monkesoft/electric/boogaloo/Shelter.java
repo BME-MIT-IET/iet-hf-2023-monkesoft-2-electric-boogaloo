@@ -21,6 +21,10 @@ public class Shelter extends Field {
 	 * If Eq==null, then there are no equipments to collect
 	 */
 	private Equipment Eq = null;
+
+	protected Equipment getEuipment() {
+		return this.Eq;
+	}
 	
 	/**
 	 *  A paramÃ©terkÃ©nt kapott virolÃ³gus interaktÃ¡lt az Ã³vÃ³hellyel,

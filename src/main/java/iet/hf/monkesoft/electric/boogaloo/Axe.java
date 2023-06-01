@@ -3,7 +3,10 @@ package iet.hf.monkesoft.electric.boogaloo;
 public class Axe extends Equipment{
 	
 	private boolean isSharp;
-	
+
+	protected boolean getIsSharp(){
+		return isSharp;
+	}
 	/**
 	 * Effect of axe is NULL
 	 */
