@@ -4,16 +4,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import org.junit.Assert;
 public class GloveReflectStepdefs {
 
     Virologist playerOne;
     Virologist playerTwo;
 
-    Glove glove;
+    Glove glove1;
+
+    Glove glove2;
 
     Field field;
 
-    Amnesia amnesia;
+    Confusion confusion;
     Virus virus;
     @Given("there are two players on the same field")
     public void thereAreTwoPlayersOnTheSameField() {
@@ -29,15 +32,15 @@ public class GloveReflectStepdefs {
     public void aGloveIsEquippedOnPlayerOne() {
 
         Reflect reflect = new Reflect();
-        glove = new Glove(reflect, 0);
-        playerOne.AddEquipment(glove);
+        glove1 = new Glove(reflect, 0);
+        playerOne.AddEquipment(glove1);
         playerOne.getEquipmentInventory().get(0).Equipped(playerOne);
     }
 
-    @Given("PlayerTwo has virus with amnesia effect")
-    public void playertwoHasVirusWithAmnesiaEffect() {
-        amnesia = new Amnesia();
-        virus = new Virus(amnesia);
+    @Given("PlayerTwo has virus with confusion effect")
+    public void playertwoHasVirusWithConfusionEffect() {
+        confusion = new Confusion();
+        virus = new Virus(confusion);
 
         playerTwo.AddAgent(virus);
     }
@@ -49,16 +52,38 @@ public class GloveReflectStepdefs {
 
     @Then("PlayerOne is not infected")
     public void playeroneIsNotInfected() {
-        assert(!playerOne.HasEffect(amnesia));
+        Assert.assertTrue(!playerOne.HasEffect(confusion));
     }
 
     @Then("PlayerTwo is infected")
     public void playertwoIsInfected() {
-        assert(playerTwo.HasEffect(amnesia));
+        Assert.assertTrue(playerTwo.HasEffect(confusion));
     }
 
     @Then("agent is used up")
     public void agentIsUsedUp() {
-        assert(!playerTwo.getAgentInventory().contains(virus));
+        Assert.assertTrue(!playerTwo.getAgentInventory().contains(virus));
+    }
+
+    @Given("a glove is equipped on PlayerTwo")
+    public void aGloveIsEquippedOnPlayerTwo() {
+        Reflect reflect = new Reflect();
+        glove2 = new Glove(reflect, 0);
+        playerTwo.AddEquipment(glove2);
+        playerTwo.getEquipmentInventory().get(0).Equipped(playerTwo);
+    }
+
+    @Then("PlayerTwo is not infected")
+    public void playertwoIsNotInfected() {
+        Assert.assertTrue(!playerTwo.getAgentInventory().contains(virus));
+    }
+
+    @Given("a cape with {double}% protection is equipped on PlayerTwo")
+    public void aCapeWithProtectionIsEquippedOnPlayerTwo(double percentage) {
+
+        General generalProtection = new General(percentage);
+        Cape cape = new Cape(generalProtection, 0);
+        playerTwo.AddEquipment(cape);
+        playerTwo.getEquipmentInventory().get(0).Equipped(playerTwo);
     }
 }

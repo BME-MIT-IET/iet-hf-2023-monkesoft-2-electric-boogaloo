@@ -27,6 +27,10 @@ public class General extends Protection {
 	General(){
 		super("general", 0.823);
 	}
+
+	General(double percentage){
+		super("general", percentage);
+	}
 /**
  * az Esély attribútum értékével megegyező eséllyel true-val, egyébként false-al tér vissza. 
  * Minden effekt ellen azonos módon véd. Ha a visszatérési érték true, akkor a védelem sikeres volt.
