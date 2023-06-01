@@ -31,6 +31,7 @@ public abstract class Material {
 	 *Az objektum Ăˇltal reprezentĂˇlhatĂł maximĂˇlis anyagmennyisĂ©g valamilyen okbĂłl nĹ‘tt (tipikusan akkor, ha egy VirolĂłgus objektumra felkerĂĽlt valamilyen effekt, ami a maximĂˇlis anyaggyĹ±jtĹ‘ kĂ©pessĂ©get nĂ¶veli).
 	 */
 	public void IncreaseMax(int i) {
+
 		MaxAmount=(MaxAmount+i);
 	}
 	
@@ -40,6 +41,9 @@ public abstract class Material {
 	 */
 	public void DecreaseMax(int i) {
 		MaxAmount=(MaxAmount-i);
+		if (Amount > MaxAmount){
+			Amount = MaxAmount;
+		}
 	}
 
 	/**
@@ -111,5 +115,7 @@ public abstract class Material {
 		return MaxAmount;
 	}
 	
-	
+	public int getOriginalMax(){
+		return MAX;
+	}
 }

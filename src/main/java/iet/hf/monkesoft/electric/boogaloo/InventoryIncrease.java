@@ -15,7 +15,7 @@ package iet.hf.monkesoft.electric.boogaloo;
  * Az anyaggyűjtő képesség növelésére szolgáló effekt singleton osztálya.
  */
 public class InventoryIncrease extends Effect {
-	
+
 	InventoryIncrease() {
 		super("inventoryincrease");
 	}
@@ -26,19 +26,18 @@ public class InventoryIncrease extends Effect {
 	 */
 	@Override
 	public void Apply(Virologist v) {
-		v.getMaterialList().forEach( m -> m.IncreaseMax(m.getMax()));
+		v.getMaterialList().forEach(m -> m.IncreaseMax(m.getOriginalMax()));
 		new AppliedEffect(v, this, -1);
 	}
-	
-/**
- * Felezi a paraméterként kapott virológus anyaggyűjtő képességét és eltávolít egy AppliedEffektet, 
- * ami tárolja őt a virológus AppliedEffekt tárolójából.
- */
+
+	/**
+	 * Felezi a paraméterként kapott virológus anyaggyűjtő képességét és eltávolít
+	 * egy AppliedEffektet,
+	 * ami tárolja őt a virológus AppliedEffekt tárolójából.
+	 */
 	@Override
 	public void Die(Virologist v) {
 		v.RemoveEffect(this);
-		for (int i = 0; i < v.getMaterialList().size(); i++) {
-			v.getMaterialList().forEach( m -> m.DecreaseMax(m.getMax()));
-		}
+		v.getMaterialList().forEach(m -> m.DecreaseMax(m.getOriginalMax()));
 	}
 }
