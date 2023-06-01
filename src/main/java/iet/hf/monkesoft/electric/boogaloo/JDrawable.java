@@ -20,6 +20,7 @@ public class JDrawable extends JComponent {
 	
 	public static final String IMG_VIROLOGIST = "big sad monke.png";
 	public static final String IMG_VIROLOGIST_ACTUAL = "happy monke.png";
+	public static final String IMG_VIROLOGIST_DEAD = "dead monke.png";
 
 	public static final String IMG_CAPE = "cape.png";
 	public static final String IMG_GLOVE = "glove.png";

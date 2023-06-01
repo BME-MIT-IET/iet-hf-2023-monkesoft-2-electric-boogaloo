@@ -1,7 +1,6 @@
 package iet.hf.monkesoft.electric.boogaloo;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -28,13 +27,6 @@ public class JGeneticCode extends JDrawable implements MouseListener{
 		bVaccine.addMouseListener(this);
 		bVirus.setAlignmentX(CENTER_ALIGNMENT);
 		bVaccine.setAlignmentX(CENTER_ALIGNMENT);
-	}
-
-	/**
-	 * Kirajzolja a genetikai kódot
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
 	}
 
 	@Override

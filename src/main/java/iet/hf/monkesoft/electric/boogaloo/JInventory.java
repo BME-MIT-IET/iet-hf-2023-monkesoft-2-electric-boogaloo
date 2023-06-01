@@ -250,8 +250,8 @@ public class JInventory extends JPanel implements MouseListener{
 		return img;
 	}
 	// save to remove at next call
-	JButton optionButtons[] = null;
-	public void setOptionButtons(JButton buttons[]) {
+	JButton[] optionButtons = null;
+	public void setOptionButtons(JButton[] buttons) {
 		
 		if(optionButtons != null)
 			for(JButton b : optionButtons)
@@ -273,9 +273,9 @@ public class JInventory extends JPanel implements MouseListener{
 		
 		this.lastVirologist = virologist;
 		// numbers
-		aminoLabel.setText("  Amino Acid: " + String.valueOf(virologist.getMaterialList().get(0).getAmount()) + "         ");
-		nucleoLabel.setText("Nucleotid: " + String.valueOf(virologist.getMaterialList().get(1).getAmount()));
-		moveLabel.setText("Moves left: " + String.valueOf(virologist.getMovementPoints()) + "  ");
+		aminoLabel.setText("  Amino Acid: " + virologist.getMaterialList().get(0).getAmount()+ "         ");
+		nucleoLabel.setText("Nucleotid: " + virologist.getMaterialList().get(1).getAmount());
+		moveLabel.setText("Moves left: " + virologist.getMovementPoints() + "  ");
 		
 		// effects
 		effects.removeAll();

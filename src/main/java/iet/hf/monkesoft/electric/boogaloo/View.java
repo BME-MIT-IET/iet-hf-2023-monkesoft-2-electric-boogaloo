@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -18,7 +19,7 @@ public class View extends JFrame implements MouseListener{
 	private ArrayList<JVirologist> virologists =  new ArrayList<>();
 	private ArrayList<JEquipment> equipments =  new ArrayList<>();
 	
-	private Random rnd = new Random();
+	private SecureRandom rnd = new SecureRandom();
 
 	Interface iface;
 	JPanel map;
@@ -32,7 +33,7 @@ public class View extends JFrame implements MouseListener{
 		VIROLOGISTSELECTTOVIRUS, 
 		VIROLOGISTSELECTTOKILL,
 		VIROLOGISTSELECTTOLOOT
-	};
+	}
 	
 	ViewState viewState = ViewState.NONE;
 	Agent selectedAgent;
@@ -96,23 +97,30 @@ public class View extends JFrame implements MouseListener{
 		// generate players
 		int numberOfPlayers = 0;
 		String extra = "";
-		while(true){
-			String s = (String)JOptionPane.showInputDialog(
-                this,
-                "Number of players:\n"+ extra,
-                "Szia uram",
-                JOptionPane.PLAIN_MESSAGE,
-                null,
-                null,
-                "2"
-            );
-	
+		boolean start = false;
+		while (!start) {
+			String s = (String) JOptionPane.showInputDialog(
+					this,
+					"Number of players:\n" + extra,
+					"Szia uram",
+					JOptionPane.PLAIN_MESSAGE,
+					null,
+					null,
+					"2");
+
 			if ((s != null) && (s.length() > 0)) {
 				try {
 					numberOfPlayers = Integer.parseInt(s);
-					break;
-				} catch(NumberFormatException e)
-				{
+					if (numberOfPlayers < 0) {
+						extra = "Mi van, negatív?";
+					} else if (numberOfPlayers == 0) {
+						extra = "Azért az elég unalmas lenne";
+					} else if (numberOfPlayers > 24) {
+						extra = "Annyi monke a világon nincs!";
+					} else {
+						start = true;
+					}
+				} catch (NumberFormatException e) {
 					extra = "Numbert write-olj te buta majom";
 				}
 			}
@@ -122,7 +130,7 @@ public class View extends JFrame implements MouseListener{
 		//List that countains the position of at least 3 distinct labs
 		//If these postitions are the ones in the loop, automatically
 		//Generate a laboratory to ensure there are at least 3
-		ArrayList<Integer> listOfLabPositions = new ArrayList<Integer>();
+		ArrayList<Integer> listOfLabPositions = new ArrayList<>();
 		while(listOfLabPositions.size() < 3) {
 			int randomIndex = rnd.nextInt(mapwidth * mapwidth);
 			if(!listOfLabPositions.contains(randomIndex)) {
@@ -303,14 +311,21 @@ public class View extends JFrame implements MouseListener{
 	public void onEndTurn() {
 		this.getCurrentVirologist().EndTurn();
 		iface.GUIcommand("end");
-		for(JVirologist jv : virologists)
-		{
-			jv.ChangePicture();
-		}
+		updateVirologistImages();
 		inventoryPanel.updateContent(getCurrentVirologist());
 		onStateUpdate(ViewState.NONE);
 		repaint();
 	}
+
+	public void updateVirologistImages()
+	{
+		for(JVirologist jv : virologists)
+		{
+			jv.ChangePicture();
+		}
+		repaint();
+	}
+
 	
 	/**
 	 * Visszaadja az Ã©ppen soron lÃ©vÅ‘ virolÃ³gust
@@ -337,6 +352,7 @@ public class View extends JFrame implements MouseListener{
 	}
 	public void onStateUpdate(ViewState s)
 	{
+		updateVirologistImages();
 		// remove temp options 
 		inventoryPanel.setOptionButtons(null);
 		viewState = s;

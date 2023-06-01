@@ -39,7 +39,8 @@ public class General extends Protection {
 	public boolean Protect(Agent a, Virologist v, Virologist v2) {
 		return Interface.Random.nextBoolean(Chance);
 	}
-	
+
+	@Override
 	public void Apply(Virologist v) {
 		new AppliedEffect(v, this, -1);
 	}

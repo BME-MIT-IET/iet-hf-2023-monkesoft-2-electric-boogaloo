@@ -17,8 +17,7 @@ public class JField extends JDrawable implements MouseListener{
 	private View view;
 	private Field field;
 	public JButton bInteract;
-	public JButton bStealEq[];
-	private JButton bStealMat[];
+	public JButton[] bStealEq;
 	
 	private boolean highlighted = false;
 	
@@ -33,6 +32,7 @@ public class JField extends JDrawable implements MouseListener{
 	/**
 	 * Kirajzolja a mezőt 
 	 * */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		if(highlighted)
@@ -56,6 +56,7 @@ public class JField extends JDrawable implements MouseListener{
 	/**
 	 *  A mezőre kattintás hatására fut le, kirajzolja a szükséges gombokat
 	 * */
+	@Override
 	protected void onClick() {
 		
 	}

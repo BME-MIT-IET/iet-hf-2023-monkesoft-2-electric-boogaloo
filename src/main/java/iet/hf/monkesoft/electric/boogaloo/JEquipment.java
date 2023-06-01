@@ -1,7 +1,6 @@
 package iet.hf.monkesoft.electric.boogaloo;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -39,17 +38,11 @@ public class JEquipment extends JDrawable implements MouseListener{
 		
 		addMouseListener(this);
 	}
-	
-	/**
-	 * Felszerelés kirajzolása 
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-	
+
 	/**
 	 * Ha kiválasztunk egy felszerelést kiírja a szükséges gombokat
 	 * */
+	@Override
 	protected void onClick() {
 		if(equipped) 
 			inventory.setOptionButtons(new JButton[] {bUnequip, bDiscard});

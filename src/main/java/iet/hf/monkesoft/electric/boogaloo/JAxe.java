@@ -1,7 +1,6 @@
 package iet.hf.monkesoft.electric.boogaloo;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseEvent;
 
 /**
@@ -20,13 +19,6 @@ public class JAxe extends JEquipment{
 		bUse.addMouseListener(this);
 		bUse.setAlignmentX(CENTER_ALIGNMENT);
 		bDiscard.addMouseListener(this);
-	}
-
-	/**
-	 * Kirajzolja a baltÃ¡t
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
 	}
 	@Override
 	protected void onClick()

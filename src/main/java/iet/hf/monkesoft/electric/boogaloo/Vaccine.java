@@ -69,8 +69,6 @@ public class Vaccine extends Agent {
 			Individual ind = new Individual(this.getEff());
 			new AppliedEffect(v, ind, 5);
 		}
-		
-		return;
 	}
 	
 /**
@@ -83,7 +81,7 @@ public class Vaccine extends Agent {
 	public void Make(Virologist v) {
 		boolean ok = true;
 		for(Material m : v.getMaterialList())
-			if (m.SubtractAminoAcid(this.getCost()) == false)
+			if (!m.SubtractAminoAcid(this.getCost()))
 				ok = false;
 		if(ok)
 			v.AddAgent(this);

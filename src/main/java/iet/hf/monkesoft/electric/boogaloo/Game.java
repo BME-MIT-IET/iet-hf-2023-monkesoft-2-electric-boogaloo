@@ -85,8 +85,23 @@ public class Game implements Serializable{
 	}
 	// virologist is put back to the end
 	public void EndTurn() {
-		Virologists.add(Virologists.remove(0));
-		Virologists.get(0).YourTurn();
+
+		while(true)
+		{
+			if(Virologists.isEmpty())
+			{
+				System.out.println("Everyone has died");
+				System.exit(0);
+			}
+			Virologists.add(Virologists.remove(0));
+			boolean hasTurn = Virologists.get(0).YourTurn();
+			if(!hasTurn)
+			{
+				Virologists.remove(0);
+				continue;
+			}
+			break;
+		}
 	}
 	public ArrayList<Virologist> GetVirologists()
 	{

@@ -23,7 +23,7 @@ public class Field {
 	private ArrayList<Virologist> Virologists = new ArrayList<>();
 	private ArrayList<Field> Neighbours = new ArrayList<>();
 	
-	static HashMap<Integer, Field> list = new HashMap<Integer, Field>();
+	static HashMap<Integer, Field> list = new HashMap<>();
 	int Id = 0;
 	Field(int id)
 	{
