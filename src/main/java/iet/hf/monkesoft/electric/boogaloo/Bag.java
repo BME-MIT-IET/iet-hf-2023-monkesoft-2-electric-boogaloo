@@ -40,4 +40,10 @@ public class Bag extends Equipment {
 	public String getType() {
 		return "bag";
 	}
+
+	@Override
+	public void Discard(Virologist v) {
+		v.UnEquip(this);
+		v.getEquipmentInventory().remove(this);
+	}
 }
