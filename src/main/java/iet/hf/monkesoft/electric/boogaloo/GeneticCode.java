@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class GeneticCode {
 	//0 indexen vĂ­rust, 1 indexen vakcinĂˇt tĂˇroljon
-	private ArrayList<Agent> Agents = new ArrayList<Agent>();
+	private ArrayList<Agent> Agents = new ArrayList<>();
 	private String name;
 	
 	public GeneticCode(String name, Effect eff, Effect effgenprot) {

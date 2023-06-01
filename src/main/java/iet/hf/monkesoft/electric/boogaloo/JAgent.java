@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 public class JAgent extends JDrawable implements MouseListener{
 	private Agent agent;
 	private View view;
-	
+
 	public JAgent(View view, Agent agent, String effectImage) {
 		super(effectImage);
 		this.agent = agent;
@@ -20,6 +20,7 @@ public class JAgent extends JDrawable implements MouseListener{
 		addMouseListener(this);
 		
 	}
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.white);
@@ -42,8 +43,9 @@ public class JAgent extends JDrawable implements MouseListener{
 	 * Bizonyos mennyiségű bUseAgent gombot rajzol a képernyőre. 
 	 * A leszármazottak a funkciójuknak megfelelően override-olják.
 	 * */
+	@Override
 	protected void onClick() {
-		
+		//unused overridden interface method
 	}
 	
 	

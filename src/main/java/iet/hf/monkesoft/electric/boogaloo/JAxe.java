@@ -20,13 +20,6 @@ public class JAxe extends JEquipment{
 		bUse.setAlignmentX(CENTER_ALIGNMENT);
 		bDiscard.addMouseListener(this);
 	}
-
-	/**
-	 * Kirajzolja a baltÃ¡t
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
 	@Override
 	protected void onClick()
 	{

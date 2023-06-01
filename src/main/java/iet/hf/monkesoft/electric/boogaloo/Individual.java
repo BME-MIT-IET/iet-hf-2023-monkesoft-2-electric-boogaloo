@@ -23,10 +23,7 @@ public class Individual extends Protection {
 	}
 	@Override
 	public boolean Protect(Agent a, Virologist v, Virologist v2) {
-		if(a.getEff() == this.Eff) {
-			return true;
-		}
-		return false;
+		return a.getEff() == this.Eff;
 	}
 	@Override
 	public String toString()

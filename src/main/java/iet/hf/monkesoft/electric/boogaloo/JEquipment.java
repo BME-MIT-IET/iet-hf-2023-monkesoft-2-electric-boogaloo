@@ -38,17 +38,11 @@ public class JEquipment extends JDrawable implements MouseListener{
 		
 		addMouseListener(this);
 	}
-	
-	/**
-	 * Felszerelés kirajzolása 
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-	
+
 	/**
 	 * Ha kiválasztunk egy felszerelést kiírja a szükséges gombokat
 	 * */
+	@Override
 	protected void onClick() {
 		if(equipped) 
 			inventory.setOptionButtons(new JButton[] {bUnequip, bDiscard});

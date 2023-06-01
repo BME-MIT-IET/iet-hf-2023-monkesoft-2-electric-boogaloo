@@ -50,12 +50,11 @@ public class Reflect extends Effect {
 		
 		return true;
 	}
-
+	@Override
 	public void Apply(Virologist v) {
 		new AppliedEffect(v, this, -1);
-		return;
 	}
-
+	@Override
 	public void Die(Virologist v) {
 		v.RemoveEffect(this);
 	}

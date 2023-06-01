@@ -18,6 +18,7 @@ public class JEffect extends JDrawable {
 	/**
 	 * Kirajzolja az effekt ikonját es az idot
 	 * */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.white);

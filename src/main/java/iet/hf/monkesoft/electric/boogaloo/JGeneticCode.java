@@ -29,13 +29,6 @@ public class JGeneticCode extends JDrawable implements MouseListener{
 		bVaccine.setAlignmentX(CENTER_ALIGNMENT);
 	}
 
-	/**
-	 * Kirajzolja a genetikai kódot
-	 * */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if(e.getSource() == this)
