@@ -9,7 +9,7 @@ public class Storage extends Field {
 	 * 
 	 */
 	
-	private ArrayList<Material> MaterialList = new ArrayList<Material>();
+	private ArrayList<Material> MaterialList = new ArrayList<>();
 	
 	public Storage(int amino, int nucleo, int id)
 	{
@@ -74,7 +74,8 @@ public class Storage extends Field {
 	}
 	@Override
 	public String toString() {
-		int amino = 0, nucleo = 0;
+		int amino = 0;
+		int nucleo = 0;
 		for(Material m : MaterialList)
 		{
 			amino += m.getAminoAcid();

@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -18,7 +19,7 @@ public class View extends JFrame implements MouseListener{
 	private ArrayList<JVirologist> virologists =  new ArrayList<>();
 	private ArrayList<JEquipment> equipments =  new ArrayList<>();
 	
-	private Random rnd = new Random();
+	private SecureRandom rnd = new SecureRandom();
 
 	Interface iface;
 	JPanel map;
@@ -32,7 +33,7 @@ public class View extends JFrame implements MouseListener{
 		VIROLOGISTSELECTTOVIRUS, 
 		VIROLOGISTSELECTTOKILL,
 		VIROLOGISTSELECTTOLOOT
-	};
+	}
 	
 	ViewState viewState = ViewState.NONE;
 	Agent selectedAgent;
@@ -129,7 +130,7 @@ public class View extends JFrame implements MouseListener{
 		//List that countains the position of at least 3 distinct labs
 		//If these postitions are the ones in the loop, automatically
 		//Generate a laboratory to ensure there are at least 3
-		ArrayList<Integer> listOfLabPositions = new ArrayList<Integer>();
+		ArrayList<Integer> listOfLabPositions = new ArrayList<>();
 		while(listOfLabPositions.size() < 3) {
 			int randomIndex = rnd.nextInt(mapwidth * mapwidth);
 			if(!listOfLabPositions.contains(randomIndex)) {

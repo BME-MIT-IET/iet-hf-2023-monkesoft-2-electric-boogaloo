@@ -31,7 +31,7 @@ public abstract class Agent {
 	private int Cost;
 	protected Effect Eff;
 
-	static HashMap<Integer, Agent> list = new HashMap<Integer, Agent>();
+	static HashMap<Integer, Agent> list = new HashMap<>();
 	int Id = 0;
 	protected Agent (Agent a, int id) {
 		setId(id);

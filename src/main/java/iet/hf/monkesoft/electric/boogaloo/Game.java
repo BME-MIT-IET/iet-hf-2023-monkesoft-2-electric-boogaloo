@@ -88,7 +88,7 @@ public class Game implements Serializable{
 
 		while(true)
 		{
-			if(Virologists.size() == 0)
+			if(Virologists.isEmpty())
 			{
 				System.out.println("Everyone has died");
 				System.exit(0);
