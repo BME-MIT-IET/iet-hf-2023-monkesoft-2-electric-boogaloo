@@ -270,7 +270,7 @@ public class Interface{
 		}
 	}
 	abstract class Command {
-		public Command() {};
+		protected Command() {};
 		/**
 		 * Executes the command
 		 * @param args Command line arguments
