@@ -40,7 +40,11 @@ Megegyezik az elvárttal.
 ### Elvárt működés
 Az adott tárgy eltűnik az inventory-ból és megsemmisül
 ### Tényleges működés
-Megegyezik az elvárttal (kivéve a táska).
+Megegyezik az elvárttal.
+Kivételt képez a táska.
+
+#### Eldobhatatlan Táska 
+A táskát (bag)-et nem lehet eldobni. (discard)
 
 ## Védőfelszerelés felvétele a virolóusra
 ### Elvárt működés

@@ -1,1 +1,0 @@
-java -classpath build/classes/java/main iet.hf.monkesoft.electric.boogaloo.Interface
