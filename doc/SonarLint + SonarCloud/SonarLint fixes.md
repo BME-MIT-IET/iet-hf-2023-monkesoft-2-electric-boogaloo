@@ -37,3 +37,6 @@ A hibák közül sok csak virtuális függvények nem használt paramétereit va
 - Nem használt függvények
 - Kikommentezett kódsorok
 - Nem használt lokális változók
+
+## Összegzés
+Egy linter szoftver használata sokat segít lokálisan a fejlesztés során, és rengeteget tud javítani a kód minőségén (vagy akár funkcionalitásán is), de nehéz fejlesztő csapat szinten konzisztensen tartani a beállításokat.
