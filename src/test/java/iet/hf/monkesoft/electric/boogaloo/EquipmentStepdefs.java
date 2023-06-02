@@ -3,7 +3,8 @@ package iet.hf.monkesoft.electric.boogaloo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.ParameterType;
+
+import org.junit.Assert;
 public class EquipmentStepdefs {
 
     Virologist player;
@@ -21,11 +22,11 @@ public class EquipmentStepdefs {
     public void glove_with_reflect_is_in_player_s_equipment_inventory() {
         effect = new Reflect();
         equipment = new Glove(effect, 0);
-        player.AddEquipment(equipment);
+        player.getEquipmentInventory().add(equipment);
     }
 
-    @Given("bag with inventoryincrease is in player's equipment inventory")
-    public void bag_with_inventoryincrease_is_in_player_s_equipment_inventory() {
+    @Given("bag with inventoryIncrease is in player's equipment inventory")
+    public void bag_with_inventoryIncrease_is_in_player_s_equipment_inventory() {
         effect = new InventoryIncrease();
         equipment = new Bag(effect, 0);
         player.AddEquipment(equipment);
@@ -40,21 +41,21 @@ public class EquipmentStepdefs {
 
     @When("player equips the equipment")
     public void player_equips_the_equipment() {
-        equipment.Equipped(player);
+        player.Equip(equipment);
     }
     @Then("the equipment is present in the equipped items inventory")
     public void the_equipment_is_present_in_the_equipped_items_inventory() {
-        assert (player.getEquippedEquipments().contains(equipment));
+        Assert.assertTrue(player.getEquippedEquipments().contains(equipment));
     }
 
     @Then("the equipment's effect is on the player")
     public void theEquipmentSEffectIsOnThePlayer() {
-        assert(player.HasEffect(effect));
+        Assert.assertTrue(player.HasEffect(effect));
     }
 
     @Then("the equipment is not present in the equipment inventory")
     public void theEquipmentIsNotPresentInTheEquipmentInventory() {
-        assert (!player.getEquipmentInventory().contains(equipment));
+        Assert.assertTrue (!player.getEquipmentInventory().contains(equipment));
     }
 
 
@@ -71,8 +72,11 @@ public class EquipmentStepdefs {
     public void thereAreTwoPlayersOnThisField() {
         player1 = new Virologist(1);
         player2 = new Virologist(2);
+
         player1.SetField(field);
+        field.Add(player1);
         player2.SetField(field);
+        field.Add(player2);
     }
 
     @Given("PlayerOne has a sharp axe in his inventory")
@@ -88,18 +92,18 @@ public class EquipmentStepdefs {
 
     @Then("PlayerTwo gets removed from field")
     public void playerTwoGetsRemovedFromField() {
-        assert (!field.GetVirologists().contains(player2));
-    }
-
-    @Given("PlayerOne has a sharp blunt in his inventory")
-    public void playeroneHasASharpBluntInHisInventory() {
-        axe = new Axe(0);
-        axe.Blunt();
-        player1.AddEquipment(axe);
+        Assert.assertTrue (!field.GetVirologists().contains(player2));
     }
 
     @Then("PlayerTwo is not removed from field")
     public void playertwoIsNotRemovedFromField() {
-        assert (field.GetVirologists().contains(player2));
+        Assert.assertTrue (field.GetVirologists().contains(player2));
+    }
+
+    @Given("PlayerOne has a blunt axe in his inventory")
+    public void playeroneHasABluntAxeInHisInventory() {
+        axe = new Axe(0);
+        axe.Blunt();
+        player1.AddEquipment(axe);
     }
 }

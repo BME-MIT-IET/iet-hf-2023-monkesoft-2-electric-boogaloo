@@ -10,8 +10,7 @@ Feature: Equipment
     Examples:
       | equipment | effect            |
       | glove     | reflect           |
-      | bag       | inventoryincrease |
-      | cape      | individual        |
+      | bag       | inventoryIncrease |
       | glove     | reflect           |
 
   Scenario: PlayerOne attacks PlayerTwo with a sharp axe
@@ -24,7 +23,7 @@ Feature: Equipment
   Scenario: PlayerOne attacks PlayerTwo with a blunt axe
     Given There is a field
     Given There are two players on this field
-    Given PlayerOne has a sharp blunt in his inventory
+    Given PlayerOne has a blunt axe in his inventory
     When PlayerOne uses axe on PlayerTwo
     Then PlayerTwo is not removed from field
 

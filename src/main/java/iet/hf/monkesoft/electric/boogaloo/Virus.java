@@ -31,9 +31,6 @@ public class Virus extends Agent {
 
 	@Override
 	public void Activate(Virologist v, Virologist v2) {
-		//The virus dies, no matter what
-		v.RemoveAgent(this);
-		
 		//Check if v has effects that protect against this virus
 		//if there are any, don't do anything
 		for(AppliedEffect ae: v.getAe()) {
