@@ -31,7 +31,7 @@ Feature: Some complex scenarios
     genetic code, the uses the resources to create a virus and a vaccine.
     PlayerTwo has a virus which he created with the same genetic code, steps to
     PlayerOne and uses the virus on him.
-    PlayerTwo uses the vaccine to cure himself, then uses the
+    PlayerOne uses the vaccine to cure himself, then uses the
     Virus to infect PlayerTwo.
     Given there is a field
     Given there is a storage with max of each resource
