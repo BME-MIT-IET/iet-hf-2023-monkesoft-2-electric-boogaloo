@@ -34,3 +34,6 @@ Helyettük biztosabb equalsIgnoreCase()
 
 ## A projekt SonarCoud felülete az alábbi linken érhető el:
 https://sonarcloud.io/project/overview?id=BME-MIT-IET_iet-hf-2023-monkesoft-2-electric-boogaloo
+
+## Összegzés
+Egy felhő alapú kód analizáló eszköz konzisztensebben rá tud mutatni a szoftverben található kódolási hibákra, mint egy-egy fejlesztők saját gépére telepített linter. Emellett rengeteg hasznos beállítást is tartalmaz, mint például a szervezeti standardok beállítása, vagy csak a módosított kódrészletek elmezése pull requestekben. Segítségével sokkal könnyebb fejlesztés során betartani a clean code elveit, az eredmény pedig könnyebben átlátható és értelmezhető kód. Hasznos funkciói ellenére a logikai hibákat nem találja meg; ezért van szükség valódi tesztelésre is (legyen az unit-, BDD-, manuális-, stb.)
