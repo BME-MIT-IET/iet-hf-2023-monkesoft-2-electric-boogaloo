@@ -25,9 +25,9 @@ A tesztek írásakor először rossz *assert* metódust használtam, ezt javíto
 Itt mozgással kapcsolatos forgatókönyveket írtam.
 
 Forgatókönyvek:
-    -Egy játékos átmegy egy szomszédos mezőre
-    -Egy játékos megpróbál egy nem szomszédos mezőre menni
-    -Egy játékos egy olyan mezőre lép, ahol már van egy másik játékos.
+    -Egy játékos átmegy egy szomszédos mezőre\
+    -Egy játékos megpróbál egy nem szomszédos mezőre menni\
+    -Egy játékos egy olyan mezőre lép, ahol már van egy másik játékos\
 
 ### Equipment.feature
 
@@ -76,8 +76,26 @@ A Virus osztály Activate() metódusából kiszedtem egy félrevezető Virologis
 (Egy felsőbb szintű függvénynek kell ezt meghívnia)\
 A rossz működést helyesnek feltételezve sok időt töltöttem azzal, hogy rájöjjek miért nem működnek az ehhez kapcsolódó tesztek.
 
+## Összegzés
 
+A projekten dolgozás során a következő fontosabb dolgokat tanultam:\
+&emsp; -Betekintést nyertem a Gherkin nyelvbe\
+&emsp; -Megértettem, hogy mit is jelent a viselkedésalapú szoftverfejlesztés\
+&emsp; -Megtanultam, hogy a Cucumber keretrendszerrel hogyan lehet segíteni a szoftverfejlesztést
 
+Mi is az a Behaviour Driven Development, mire jó a Cucumber?
 
+A BDD, vagyis viselkedés alapú szoftverfejlesztés egy olyan szoftverfejlesztési módszer, ami a fejlesztés első szakaszában\
+leszögezi az alkalmazás funkcionalitását forgatókönyvek segítségével, amikben pontosan definiálva van az elvárt működés.\
+Az implementáció helyességének ellenőrzéséhez a forgatókönyvekhez tartoznak tesztek is, amiknek\
+a vázát még a forgatókönyv írásakor elkészítjük, majd ahogy a programot írjuk úgy egészítjük ki az implementációval.
 
+Ez egy jól működő módszer tud lenni, mivel a forgatókönyveket könnyen olvasható nyelveken írjuk, így a működéssel kapcsolatos\
+elvárások egyértelműek a szoftverfejlesztő csapat minden tagjának, kevesebb a félreértés.
+Jól elkészített, minőségi tesztek mellett jó eséllyel\
+helyesen működik egy funkció, ha a forgatókönyv tesztjein átmegy a program.
+
+A Cucumber erre egy jó eszköznek tűnik, bár más hasonló keretrendszerrel még nem dolgoztam.\
+Ha már a teszteléshez felhasznált projekt készítésekor ismertem volna ezt az eszközt,\
+akkor valószínűleg nagyon megkönnyítette volna a dolgunkat.
 
